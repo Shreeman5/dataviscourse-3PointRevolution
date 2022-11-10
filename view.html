@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3 Point Revolution - CS6630 Data Visualization Project</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/heatmap.js"></script>
+    <script src="js/court.js"></script>
+</head>
+
+<body id="body">
+    <header>
+        <h1>3 Point Revolution - CS6630 Data Visualization Project</h1>
+        <h3>Group Members: Nick de Jonge, Shreeman Gautam, Apoorv Bhambri</h3>
+        <div>**Project info/description**</div>
+        <p>Choose Season:</p>
+        <select name="dataset" id="dataset-select" onchange="dataSelect(this.value);">
+            <option value="0">2010-2011</option>
+            <option value="1">2011-2012</option>
+            <option value="2">2012-2013</option>
+            <option value="3">2013-2014</option>
+            <option value="4">2014-2015</option>
+            <option value="5">2015-2016</option>
+            <option value="6">2016-2017</option>
+            <option value="7">2017-2018</option>
+            <option value="8">2018-2019</option>
+            <option value="9">2019-2020</option>
+            <option value="10">2020-2021</option>
+            <option value="11">2021-2022</option>
+          </select>
+
+    </header>
+    <div class="view">   
+        <svg id="court">
+        </svg>
+        <svg id="heatmap">
+        </svg>
+    </div>
+</body>
+</html>

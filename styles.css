@@ -1,0 +1,17 @@
+.shotmap-court *{
+    fill: transparent;
+    stroke: black;
+    stroke-width: 0.1}
+
+.shotmap-court-outline{
+    stroke-width: 0.2;
+}
+
+.shotmap-court-ft-circle-bottom{
+    stroke-dasharray: 1.5, 1
+}
+
+.shotmap-court-hoop,.shotmap-court-backboard{
+    z-index: 100
+}
+
