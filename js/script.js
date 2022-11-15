@@ -1,18 +1,18 @@
 // ******* DATA LOADING *******
 async function loadData () {
     const shotdata10_22 = [];
-    shotdata10_22.push(await d3.csv('data/2010-11_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2011-12_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2012-13_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2013-14_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2014-15_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2015-16_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2016-17_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2017-18_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2018-19_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2019-20_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2020-21_FG3A.csv'));
-    shotdata10_22.push(await d3.csv('data/2021-22_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2010-11_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2011-12_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2012-13_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2013-14_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2014-15_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2015-16_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2016-17_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2017-18_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2018-19_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2019-20_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2020-21_FG3A.csv'));
+    shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2021-22_FG3A.csv'));
     return { shotdata10_22 };
   }
   

@@ -3,38 +3,55 @@ class Court {
      * Creates a Court Object
      */
     constructor() {
-        // Dimensions
+        // Dimensions of NBA regulation basketball court
+        // dimensions, appendArcPath() and drawCourt() derived from MIT Open source LICENSE
+        // https://github.com/virajsanghvi/d3.basketball-shot-chart/blob/master/LICENSE
         this.dimensions = {
             // svg height
-            height: 1000,
+            height: 752,
+
             // svg width
             width: 800,
+
             // basketball hoop diameter (ft)
             basketDiameter: 1.5,
+
             // distance from baseline to backboard (ft)
             basketProtrusionLength: 4,
+
             // backboard width (ft)
             basketWidth: 6,
+
             // full length of basketball court (ft)
             courtLength: 94,
+
             // full width of basketball court (ft)
             courtWidth: 50,
+
             // distance from baseline to free throw line (ft)
             freeThrowLineLength: 19,
+
             // radius of free throw line circle (ft)
-            freeThrowCircleRadius: 6,
+            freeThrowCircleRadius: 8,
+
             // width of key marks (dashes on side of the paint) (ft)
             keyMarkWidth: .5,
+
             // width the key (paint) (ft)
             keyWidth: 16,
+
             // radius of restricted circle (ft)
             restrictedCircleRadius: 4,
-            // distance from baseline where three point line because circular (ft)
+
+            // distance from baseline where three point line becomes circular (ft)
             threePointCutoffLength: 14,
+
             // distance of three point line from basket (ft)
             threePointRadius: 23.75,
+
             // distance of corner three point line from basket (ft)
             threePointSideRadius: 22, 
+
             // width of key marks (dashes on side of the paint) (ft)
             keyMarkWidth: .5,
         }
@@ -53,7 +70,9 @@ class Court {
 
         var line = d3.lineRadial()
             .radius(radius)
-            .angle(function(d, i) { return angle(i); });
+            .angle(function(d, i) {
+                return angle(i);
+            });
 
         return base.append('path').datum(d3.range(points))
             .attr('d', line);
@@ -72,12 +91,10 @@ class Court {
             basketProtrusionLength = this.dimensions.basketProtrusionLength,
             basketDiameter = this.dimensions.basketDiameter,
             basketWidth = this.dimensions.basketWidth,
-            restrictedCircleRadius = this.dimensions.restrictedCircleRadius,   
             keyMarkWidth = this.dimensions.keyMarkWidth,
             width = this.dimensions.width,
             height = this.dimensions.height;
 
-        let threePointLength = threePointRadius + basketProtrusionLength;
         let visibleCourtLength = courtLength/2;
 
         var base = d3.select('#court')
@@ -85,7 +102,8 @@ class Court {
             .attr('viewBox', '0 0 ' + courtWidth + ' ' + visibleCourtLength)
             .append('g')
             .attr('class', 'shotmap-court');
-        if (height) base.attr('height', height);
+
+        base.attr('height', height);
                          
         base.append('rect')
             .attr('class', 'shotmap-court-outline')
@@ -111,6 +129,7 @@ class Court {
                 
         var tpAngle = Math.atan(threePointSideRadius / 
             (threePointCutoffLength - basketProtrusionLength - basketDiameter/2));
+
         this.appendArcPath(base, threePointRadius, -1 * tpAngle, tpAngle)
             .attr('class', 'shotmap-court-3pt-line')
             .attr('transform', 'translate(' + (courtWidth / 2) + ', ' + 
@@ -125,12 +144,7 @@ class Court {
                 .attr('x2', courtWidth / 2 + threePointSideRadius * n)
                 .attr('y2', visibleCourtLength);
         });
-          
-        this.appendArcPath(base, restrictedCircleRadius, -1 * Math.PI/2, Math.PI/2)
-            .attr('class', 'shotmap-court-restricted-area')
-            .attr('transform', 'translate(' + (courtWidth / 2) + ', ' + 
-                (visibleCourtLength - basketProtrusionLength - basketDiameter / 2) + ')');
-                                                           
+                                                                  
         this.appendArcPath(base, freeThrowCircleRadius, -1 * Math.PI/2, Math.PI/2)
             .attr('class', 'shotmap-court-ft-circle-top')
             .attr('transform', 'translate(' + (courtWidth / 2) + ', ' + 
