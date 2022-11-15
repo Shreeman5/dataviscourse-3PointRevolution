@@ -15,3 +15,14 @@
     z-index: 100
 }
 
+#heatmap{
+    left: 15px;
+    top: 220px;
+    position: absolute;
+}
+
+#court{
+    left: 15px;
+    top: 220px;
+    position: absolute;
+}
