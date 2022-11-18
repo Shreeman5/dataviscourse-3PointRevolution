@@ -27,37 +27,12 @@ class Heatmap {
     // Draws heatmap with given dataset
     drawHeatmap(shotdata) {
         let that = this;
-        
-        // analyze the data
-        // let maxX = 0;
-        // let minX = 0;
-        // let maxY = 0;
-        // let minY = 0;
-        // shotdata.forEach(d => {
-        //     if (parseInt(d.LOC_X) < maxX){
-        //         maxX = parseInt(d.LOC_X)
-        //     }
-        //     if (parseInt(d.LOC_X )> minX){
-        //         minX = parseInt(d.LOC_X)
-        //     }
-        //     if (parseInt(d.LOC_Y) < maxY){
-        //         maxY = parseInt(d.LOC_Y)
-        //     }
-        //     if (parseInt(d.LOC_Y) > minY){
-        //         minY = parseInt(d.LOC_Y)
-        //     }
-        // });
-        // console.log(minX)
-        // console.log(maxX)
-        // console.log(minY)
-        // console.log(maxY)
 
-        // Remove old circles
-        //TODO: Nick, can you remove the rectangles?
-        d3.select('#heatmap').selectAll('circles').remove();
+        // Remove old rectangles
+        d3.select('#heatmap').selectAll('rect').remove();
         d3.select('#heatmap').select('g').remove();
 
-        // draw a small circle to show each 
+        // shot bin selection
         let shots = d3.select('#heatmap')
             .attr('width', that.width)
             .attr('height', that.height)
@@ -65,20 +40,6 @@ class Heatmap {
             .attr('class', 'shot-positions')
             .attr('width', that.width)
             .attr('height', that.height);
-
-        // shots
-        //     .selectAll('circle')
-        //     .data(shotdata)  
-        //     .enter()
-        //     .append('circle')
-        //     .attr('cx', function(d){
-        //         return that.xScale(parseInt(d.LOC_X)); 
-        //     })
-        //     .attr('cy', function(d){
-        //         return that.yScale(Math.abs(parseInt(d.LOC_Y)));
-        //     })
-        //     .attr('r', 0.5)
-        //     .attr('fill', 'black');
 
         let data = []
         for (let i = 0; i < 800; i += 8){
@@ -163,44 +124,6 @@ class Heatmap {
                     return 0.5
                 }
             })
-
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(-250))
-        //     .attr('y', that.yScale(0))
-        //     .attr('width', that.xScale(-245) - that.xScale(-250))
-        //     .attr('height', that.yScale(5) - that.yScale(0))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', '#69a3b2')
-
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(245))
-        //     .attr('y', that.yScale(0))
-        //     .attr('width', that.xScale(250) - that.xScale(245))
-        //     .attr('height', that.yScale(5) - that.yScale(0))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', 'red')
-
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(-250))
-        //     .attr('y', that.yScale(395))
-        //     .attr('width', that.xScale(-245) - that.xScale(-250))
-        //     .attr('height', that.yScale(400) - that.yScale(395))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', 'red')
-
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(245))
-        //     .attr('y', that.yScale(395))
-        //     .attr('width', that.xScale(250) - that.xScale(245))
-        //     .attr('height', that.yScale(400) - that.yScale(395))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', 'green')
-
-        
 
         d3.select('.shot-positions')
             .attr('transform', 'rotate(180 400 376)');

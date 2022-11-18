@@ -110,8 +110,7 @@ class Court {
             .attr('x', 0)
             .attr('y', 0)
             .attr('width', courtWidth)
-            .attr('height', visibleCourtLength)
-            .attr('stroke-width', '0.2');
+            .attr('height', visibleCourtLength);
 
         base.append('rect')
             .attr('class', 'shotmap-court-key')

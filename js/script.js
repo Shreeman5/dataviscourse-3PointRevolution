@@ -30,14 +30,15 @@ loadData().then((loadedData) => {
     // Store the loaded data into the globalApplicationState
     globalApplicationState.shotdata10_22 = loadedData.shotdata10_22;
     
-    let playerData10_11 = d3.group(globalApplicationState.shotdata10_22[0], d=> d.PLAYER_NAME)
+    let playerData10_11 = d3.group(globalApplicationState.shotdata10_22[0], d=> d.SHOT_ZONE_BASIC
+      )
     console.log(playerData10_11)
+    
+    // Build heatmap
+    globalApplicationState.heatmap = new Heatmap(globalApplicationState);
 
     // Build court
     globalApplicationState.court = new Court();
-
-    // Build heatmap
-    globalApplicationState.heatmap = new Heatmap(globalApplicationState);
   });
 
 
