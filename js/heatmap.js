@@ -117,27 +117,6 @@ class Heatmap {
                 }               
 
             });
-            // .attr('opacity', function(d){
-            //     let fraction
-            //     if (d[3] === 0){
-            //         fraction = -1
-            //     }
-            //     if (fraction === -1){
-            //         return 0.5
-            //     }
-            // })
-            // .attr('stroke', function(d){
-            //     let fraction
-            //     if (d[3] === 0){
-            //         fraction = -1
-            //     }
-            //     if (fraction === -1){
-            //         return 'white'
-            //     }
-            //     else{
-            //         return 'black'
-            //     }
-            // }
         
         d3.select('.shot-positions')
             .attr('transform', 'rotate(180 400 376)');
