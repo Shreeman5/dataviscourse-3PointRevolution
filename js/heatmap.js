@@ -28,29 +28,9 @@ class Heatmap {
     drawHeatmap(shotdata) {
         let that = this;
         
-        // analyze the data
-        // let maxX = 0;
-        // let minX = 0;
-        // let maxY = 0;
-        // let minY = 0;
-        // shotdata.forEach(d => {
-        //     if (parseInt(d.LOC_X) < maxX){
-        //         maxX = parseInt(d.LOC_X)
-        //     }
-        //     if (parseInt(d.LOC_X )> minX){
-        //         minX = parseInt(d.LOC_X)
-        //     }
-        //     if (parseInt(d.LOC_Y) < maxY){
-        //         maxY = parseInt(d.LOC_Y)
-        //     }
-        //     if (parseInt(d.LOC_Y) > minY){
-        //         minY = parseInt(d.LOC_Y)
-        //     }
-        // });
-        // console.log(minX)
-        // console.log(maxX)
-        // console.log(minY)
-        // console.log(maxY)
+        // colorscale uses orange hue
+        let colorScale = d3.scaleSequential(d3.interpolateReds)
+            .domain([0, 1]);
 
         // Remove old rectangles
         d3.select('#heatmap').selectAll('rect').remove();
@@ -110,92 +90,55 @@ class Heatmap {
                 else{
                     fraction = d[2]/d[3]
                 }
-
+                
                 if (fraction === 1){
                     return '#6F189E'
                 }
                 else if (fraction < 1 && fraction >= 0.8){
-                    return '#002600'
+                    return colorScale(fraction)
                 }
                 else if (fraction < 0.8 && fraction >= 0.6){
-                    return '#004d00'
+                    return colorScale(fraction)
                 }
                 else if (fraction < 0.6 && fraction >= 0.4){
-                    return '#006600'
+                    return colorScale(fraction)
                 }
                 else if (fraction < 0.4 && fraction >= 0.2){
-                    return '#008000'
+                    return colorScale(fraction)
                 }
                 else if (fraction < 0.2 && fraction > 0){
-                    return '#fcf05c'
+                    return colorScale(fraction)
                 }
                 else if (fraction === 0){
-                    return 'red'
+                    return colorScale(fraction)
                 }
                 else if (fraction === -1){
                     return 'white'
-                }
-            })
-            .attr('opacity', function(d){
-                let fraction
-                if (d[3] === 0){
-                    fraction = -1
-                }
-                if (fraction === -1){
-                    return 0.5
-                }
-            })
-            .attr('stroke', function(d){
-                let fraction
-                if (d[3] === 0){
-                    fraction = -1
-                }
-                if (fraction === -1){
-                    return 'white'
-                }
-                else{
-                    return 'black'
-                }
-            })
+                }               
 
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(-250))
-        //     .attr('y', that.yScale(0))
-        //     .attr('width', that.xScale(-245) - that.xScale(-250))
-        //     .attr('height', that.yScale(5) - that.yScale(0))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', '#69a3b2')
-
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(245))
-        //     .attr('y', that.yScale(0))
-        //     .attr('width', that.xScale(250) - that.xScale(245))
-        //     .attr('height', that.yScale(5) - that.yScale(0))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', 'red')
-
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(-250))
-        //     .attr('y', that.yScale(395))
-        //     .attr('width', that.xScale(-245) - that.xScale(-250))
-        //     .attr('height', that.yScale(400) - that.yScale(395))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', 'red')
-
-        // shots
-        //     .append('rect')
-        //     .attr('x', that.xScale(245))
-        //     .attr('y', that.yScale(395))
-        //     .attr('width', that.xScale(250) - that.xScale(245))
-        //     .attr('height', that.yScale(400) - that.yScale(395))
-        //     .attr('stroke', 'black')
-        //     .attr('fill', 'green')
-
+            });
+            // .attr('opacity', function(d){
+            //     let fraction
+            //     if (d[3] === 0){
+            //         fraction = -1
+            //     }
+            //     if (fraction === -1){
+            //         return 0.5
+            //     }
+            // })
+            // .attr('stroke', function(d){
+            //     let fraction
+            //     if (d[3] === 0){
+            //         fraction = -1
+            //     }
+            //     if (fraction === -1){
+            //         return 'white'
+            //     }
+            //     else{
+            //         return 'black'
+            //     }
+            // }
         
-
         d3.select('.shot-positions')
             .attr('transform', 'rotate(180 400 376)');
     }
