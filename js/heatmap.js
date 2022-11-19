@@ -52,9 +52,8 @@ class Heatmap {
         // console.log(minY)
         // console.log(maxY)
 
-        // Remove old circles
-        //TODO: Nick, can you remove the rectangles?
-        d3.select('#heatmap').selectAll('circles').remove();
+        // Remove old rectangles
+        d3.select('#heatmap').selectAll('rect').remove();
         d3.select('#heatmap').select('g').remove();
 
         // draw a small circle to show each 
@@ -66,60 +65,28 @@ class Heatmap {
             .attr('width', that.width)
             .attr('height', that.height);
 
-        // shots
-        //     .selectAll('circle')
-        //     .data(shotdata)  
-        //     .enter()
-        //     .append('circle')
-        //     .attr('cx', function(d){
-        //         return that.xScale(parseInt(d.LOC_X)); 
-        //     })
-        //     .attr('cy', function(d){
-        //         return that.yScale(Math.abs(parseInt(d.LOC_Y)));
-        //     })
-        //     .attr('r', 0.5)
-        //     .attr('fill', 'black');
-
         let data = []
         for (let i = 0; i < 800; i += 8){
             for (let j = 0; j < 751; j += 9.4){
-                let smallX = i
-                let bigX = i + 8
-                let smallY = j
-                let bigY = j + 9.4
-                let attempted = 0
-                let made = 0
-                shotdata.forEach(d => {
-                    let cx = that.xScale(parseInt(d.LOC_X))
-                    let cy = that.yScale(parseInt(d.LOC_Y))
-                    if (cx >= smallX && cx < bigX && cy >= smallY && cy < bigY){
-                        // console.log('Row: ', d)
-                        // console.log('A:', cx)
-                        // console.log('B:', cy)
-                        // console.log('C:', smallX)
-                        // console.log('D:', bigX)
-                        // console.log('E:', smallY)
-                        // console.log('F:', bigY)
-
-                        made = made + parseInt(d.SHOT_MADE_FLAG)
-                        attempted = attempted + parseInt(d.SHOT_ATTEMPTED_FLAG)
-                    }
-                })
-                let fraction 
-                if (attempted === 0){
-                    fraction = -1
-                }
-                else{
-                    fraction = made/attempted
-                }
-                
-                // console.log('G:', made)
-                // console.log('H:', attempted)
-                // console.log('I:', fraction)
-
-                data.push([i, parseFloat(j.toFixed(1)), fraction])
+                data.push([i, parseFloat(j.toFixed(1)), 0, 0])
             }
         }
+
+        shotdata.forEach(d => {
+            let cx = that.xScale(parseInt(d.LOC_X))
+            let cy = that.yScale(parseInt(d.LOC_Y))
+            for (let i = 0; i < data.length; i++){
+                let smallX = data[i][0]
+                let bigX = data[i][0] + 8
+                let smallY = data[i][1]
+                let bigY = data[i][1] + 9.4
+                if (cx >= smallX && cx < bigX && cy >= smallY && cy < bigY){
+                    data[i][2] = data[i][2] + parseInt(d.SHOT_MADE_FLAG)
+                    data[i][3] = data[i][3] + parseInt(d.SHOT_ATTEMPTED_FLAG)
+                    break;
+                }
+            }
+        })
         console.log(data)
 
         shots
@@ -136,31 +103,58 @@ class Heatmap {
             .attr('width', 8)
             .attr('height', 9.4)
             .attr('fill', function(d){
-                if (d[2] <= 1 && d[2] > 0.8){
-                    return '#003300'
+                let fraction
+                if (d[3] === 0){
+                    fraction = -1
                 }
-                else if (d[2] <= 0.8 && d[2] > 0.6){
+                else{
+                    fraction = d[2]/d[3]
+                }
+
+                if (fraction === 1){
+                    return '#6F189E'
+                }
+                else if (fraction < 1 && fraction >= 0.8){
+                    return '#002600'
+                }
+                else if (fraction < 0.8 && fraction >= 0.6){
+                    return '#004d00'
+                }
+                else if (fraction < 0.6 && fraction >= 0.4){
                     return '#006600'
                 }
-                else if (d[2] <= 0.6 && d[2] > 0.4){
-                    return '#009900'
+                else if (fraction < 0.4 && fraction >= 0.2){
+                    return '#008000'
                 }
-                else if (d[2] <= 0.4 && d[2] > 0.2){
-                    return '#00cc00'
+                else if (fraction < 0.2 && fraction > 0){
+                    return '#fcf05c'
                 }
-                else if (d[2] <= 0.2 && d[2] > 0){
-                    return '#00ff00'
+                else if (fraction === 0){
+                    return 'red'
                 }
-                else if (d[2] === 0){
-                    return '#000000'
-                }
-                else if (d[2] === -1){
+                else if (fraction === -1){
                     return 'white'
                 }
             })
             .attr('opacity', function(d){
-                if (d[2] === -1){
+                let fraction
+                if (d[3] === 0){
+                    fraction = -1
+                }
+                if (fraction === -1){
                     return 0.5
+                }
+            })
+            .attr('stroke', function(d){
+                let fraction
+                if (d[3] === 0){
+                    fraction = -1
+                }
+                if (fraction === -1){
+                    return 'white'
+                }
+                else{
+                    return 'black'
                 }
             })
 
