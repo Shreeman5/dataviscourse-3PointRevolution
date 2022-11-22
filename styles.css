@@ -1,10 +1,7 @@
 .shotmap-court *{
     fill: transparent;
-    stroke: black;
-    stroke-width: 0.1}
-
-.shotmap-court-outline{
-    stroke-width: 0.2;
+    stroke: rgb(177 68 68 / 65%);
+    stroke-width: 0.2
 }
 
 .shotmap-court-ft-circle-bottom{
