@@ -20,24 +20,38 @@ async function loadData () {
 const globalApplicationState = {
     shotdata10_22: null,
     court: null,
-    heatmap: null
+    heatmap: null,
+    playerInfo: null,
+    teamInfo: null,
+    twoVthree: null
 };
   
 // ******* APPLICATION MOUNTING *******
 loadData().then((loadedData) => {
-    console.log(loadedData.shotdata10_22);
+    //console.log(loadedData.shotdata10_22);
   
     // Store the loaded data into the globalApplicationState
     globalApplicationState.shotdata10_22 = loadedData.shotdata10_22;
     
-    let playerData10_11 = d3.group(globalApplicationState.shotdata10_22[0], d=> d.PLAYER_NAME)
-    console.log(playerData10_11)
+    //let playerData10_11 = d3.group(globalApplicationState.shotdata10_22[0], d=> d.PLAYER_NAME)
+    //console.log(playerData10_11)
 
     // Build heatmap
     globalApplicationState.heatmap = new Heatmap(globalApplicationState);
 
+<<<<<<< HEAD
+    // Build player linechart 
+    globalApplicationState.playerInfo = new PlayerInfo(globalApplicationState);
+
+    //Build team linechart
+    globalApplicationState.teamInfo = new TeamInfo(globalApplicationState)
+
+    //globalApplicationState.teamInfo = new twoVthree(glo)
+
+=======
     // Build court
     globalApplicationState.court = new Court();
+>>>>>>> b49b49b36e6a40edd74b3a52a81fb1264ae6b214
   });
 
 
@@ -49,4 +63,12 @@ function dataSelect(selectedData) {
     // Draw heatmap
     let heatmap = globalApplicationState.heatmap
     heatmap.drawHeatmap(data);
+
+    // Draw player linechart
+    let playerInfo = globalApplicationState.playerInfo
+    playerInfo.drawPlayerInfo(data)
+
+    // Draw team linechart
+    let teamInfo = globalApplicationState.teamInfo
+    teamInfo.drawTeamInfo(data)
 }
