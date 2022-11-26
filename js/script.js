@@ -39,7 +39,6 @@ loadData().then((loadedData) => {
     // Build heatmap
     globalApplicationState.heatmap = new Heatmap(globalApplicationState);
 
-<<<<<<< HEAD
     // Build player linechart 
     globalApplicationState.playerInfo = new PlayerInfo(globalApplicationState);
 
@@ -48,10 +47,8 @@ loadData().then((loadedData) => {
 
     //globalApplicationState.teamInfo = new twoVthree(glo)
 
-=======
     // Build court
     globalApplicationState.court = new Court();
->>>>>>> b49b49b36e6a40edd74b3a52a81fb1264ae6b214
   });
 
 
@@ -71,4 +68,11 @@ function dataSelect(selectedData) {
     // Draw team linechart
     let teamInfo = globalApplicationState.teamInfo
     teamInfo.drawTeamInfo(data)
+}
+
+// Use with reset heatmap button to get dataset and draw heatmap
+function getValue(){
+    let selectElement = document.querySelector('#dataset-select');
+    let output = selectElement.value;
+    dataSelect(output);
 }

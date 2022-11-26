@@ -5,6 +5,8 @@ class PlayerInfo {
     constructor(globalApplicationState) {
         // Import shotdata from 2010 to 2022
         this.shotdata10_22 = globalApplicationState.shotdata10_22;
+        this.globalApplicationState  = globalApplicationState;
+        //this.heatmap = globalApplicationState.heatmap;
 
         // svg height
         this.height = 752;
@@ -86,13 +88,30 @@ class PlayerInfo {
 
         
         let lineColorScale = d3.scaleOrdinal(d3.schemeTableau10).domain(best_players_mapped.keys())
+        player_chart.select('#lines')
+            .selectAll('path')
+            .data(best_players_mapped)
+            .join('path')
+            .attr('fill', 'none')
+            .attr('stroke', ([group, values]) => lineColorScale(group))
+            .attr('stroke-width', 1)
+            .attr('d', ([group, values]) => d3.line()
+                .x((d) => xScale(d[1]))
+                .y((d) => yScale(d[2]))
+                (values)
+            )
+            .attr('id', 'line-paths');
 
-        player_chart.select('#lines').selectAll('path').data(best_players_mapped).join('path')
-             .attr('fill', 'none').attr('stroke', ([group, values]) => lineColorScale(group)).attr('stroke-width', 1)
-             .attr('d', ([group, values]) => d3.line()
-                                     .x((d) => xScale(d[1]))
-                                     .y((d) => yScale(d[2]))
-                                     (values)) 
+        // Redraw heatmap with selected player's data
+        d3.selectAll('#line-paths')
+            .on('mousemove',function(e,d){
+                console.log(e)
+                console.log(d)
+                let required_data = shotdata.filter(player => player.PLAYER_NAME === d[0])
+                console.log(required_data)
+                let heatmap = that.globalApplicationState.heatmap;
+                heatmap.drawHeatmap(required_data)
+         });
 
         player_chart.on('mousemove', (event) => {
             if (event.offsetX > this.pad_left && event.offsetX < 900 - this.pad_right) {
@@ -105,7 +124,7 @@ class PlayerInfo {
                 .filter((row) => row[1].setHours(0,0,0,0) === yearHovered.setHours(0,0,0,0))
                 .sort((rowA, rowB) => rowB[2] - rowA[2])
                 
-                console.log(filteredData)
+                //console.log(filteredData)
                 player_chart.select('#overlay')
                 .selectAll('text')
                 .data(filteredData)

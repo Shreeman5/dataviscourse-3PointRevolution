@@ -28,7 +28,7 @@ class Heatmap {
     drawHeatmap(shotdata) {
         let that = this;
         
-        // colorscale uses orange hue
+        // colorscale uses red hue
         let colorScale = d3.scaleSequential(d3.interpolateReds)
             .domain([0, 1]);
 
@@ -94,19 +94,7 @@ class Heatmap {
                 if (fraction === 1){
                     return '#6F189E'
                 }
-                else if (fraction < 1 && fraction >= 0.8){
-                    return colorScale(fraction)
-                }
-                else if (fraction < 0.8 && fraction >= 0.6){
-                    return colorScale(fraction)
-                }
-                else if (fraction < 0.6 && fraction >= 0.4){
-                    return colorScale(fraction)
-                }
-                else if (fraction < 0.4 && fraction >= 0.2){
-                    return colorScale(fraction)
-                }
-                else if (fraction < 0.2 && fraction > 0){
+                else if (fraction > 0 && fraction < 1){
                     return colorScale(fraction)
                 }
                 else if (fraction === 0){
@@ -115,7 +103,6 @@ class Heatmap {
                 else if (fraction === -1){
                     return 'white'
                 }               
-
             });
         
         d3.select('.shot-positions')
