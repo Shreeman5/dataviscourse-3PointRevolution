@@ -13,7 +13,7 @@ class PlayerInfo {
 
         // svg width
         this.width = 900;
-
+ 
         this.pad_left = 80
         this.pad_right = 50
         this.pad_bottom = 40
@@ -33,7 +33,7 @@ class PlayerInfo {
        //console.log('A:', grouped_players)
 
         let sortedValues = new Map([...grouped_players.entries()].sort((a, b) => b[1].length - a[1].length))
-        console.log('B:', sortedValues)
+        //console.log('B:', sortedValues)
         
         this.best_players = []
         let counter = 0
@@ -49,7 +49,7 @@ class PlayerInfo {
             counter += 1
         }
 
-        console.log('BP:', this.best_players)
+        //console.log('BP:', this.best_players)
 
 
         let best_players_mapped = d3.group(this.best_players, (d) => d[0])
@@ -105,10 +105,10 @@ class PlayerInfo {
         // Redraw heatmap with selected player's data
         d3.selectAll('#line-paths')
             .on('mousemove',function(e,d){
-                console.log(e)
-                console.log(d)
+                //console.log(e)
+                // console.log(d)
                 let required_data = shotdata.filter(player => player.PLAYER_NAME === d[0])
-                console.log(required_data)
+                // console.log(required_data)
                 let heatmap = that.globalApplicationState.heatmap;
                 heatmap.drawHeatmap(required_data)
          });
@@ -143,7 +143,7 @@ class PlayerInfo {
 
 
     makeArrayBetter(data, startEnd, players){
-        console.log('d:', data)
+        //console.log('d:', data)
         //console.log(new_data)
 
         let new_data = []
@@ -181,7 +181,7 @@ class PlayerInfo {
         }
 
         //console.log('d:', data)
-        console.log('dd:', almost_data)
+        //console.log('dd:', almost_data)
         return almost_data
     }
 

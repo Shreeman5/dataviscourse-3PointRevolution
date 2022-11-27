@@ -67,7 +67,7 @@ class Heatmap {
                 }
             }
         })
-        console.log(data)
+        //console.log(data)
 
         shots
             .selectAll('rect')

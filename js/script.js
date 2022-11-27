@@ -1,6 +1,6 @@
 // ******* DATA LOADING *******
 async function loadData () {
-    const shotdata10_22 = [];
+    const shotdata10_22 = [], fgadata10_22 = [];
     shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2010-11_FG3A.csv'));
     shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2011-12_FG3A.csv'));
     shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2012-13_FG3A.csv'));
@@ -13,28 +13,45 @@ async function loadData () {
     shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2019-20_FG3A.csv'));
     shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2020-21_FG3A.csv'));
     shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2021-22_FG3A.csv'));
-    return { shotdata10_22 };
+
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2010-11_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2011-12_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2012-13_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2013-14_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2014-15_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2015-16_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2016-17_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2017-18_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2018-19_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2019-20_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2020-21_FGA.csv'));
+    fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2021-22_FGA.csv'));
+    return { shotdata10_22 , fgadata10_22};
   }
   
 // ******* STATE MANAGEMENT *******
 const globalApplicationState = {
     shotdata10_22: null,
+    fgadata10_22: null,
     court: null,
     heatmap: null,
     playerInfo: null,
     teamInfo: null,
-    twoVthree: null
+    shotType: null
 };
   
 // ******* APPLICATION MOUNTING *******
 loadData().then((loadedData) => {
-    //console.log(loadedData.shotdata10_22);
+    //console.log(loadedData.fgadata10_22);
   
-    // Store the loaded data into the globalApplicationState
+    // Store the loaded shotdata into the globalApplicationState
     globalApplicationState.shotdata10_22 = loadedData.shotdata10_22;
+
+    // store loaded field goal attempt data 
+    globalApplicationState.fgadata10_22 = loadedData.fgadata10_22;
     
-    //let playerData10_11 = d3.group(globalApplicationState.shotdata10_22[0], d=> d.PLAYER_NAME)
-    //console.log(playerData10_11)
+    //let fgadata10_11 = d3.group(globalApplicationState.fgadata10_22[0], d=> d.SHOT_ZONE_BASIC)
+    //console.log(fgadata10_11)
 
     // Build heatmap
     globalApplicationState.heatmap = new Heatmap(globalApplicationState);
@@ -43,9 +60,10 @@ loadData().then((loadedData) => {
     globalApplicationState.playerInfo = new PlayerInfo(globalApplicationState);
 
     //Build team linechart
-    globalApplicationState.teamInfo = new TeamInfo(globalApplicationState)
+    globalApplicationState.teamInfo = new TeamInfo(globalApplicationState);
 
-    //globalApplicationState.teamInfo = new twoVthree(glo)
+    // Build shot type linechart
+    globalApplicationState.shotType = new ShotType(globalApplicationState);
 
     // Build court
     globalApplicationState.court = new Court();
@@ -72,7 +90,7 @@ function dataSelect(selectedData) {
 
 // Use with reset heatmap button to get dataset and draw heatmap
 function getValue(){
-    let selectElement = document.querySelector('#dataset-select');
+    let selectElement = document.getElementById('dataset-select');
     let output = selectElement.value;
     dataSelect(output);
 }
