@@ -94,7 +94,7 @@ class PlayerInfo {
             .join('path')
             .attr('fill', 'none')
             .attr('stroke', ([group, values]) => lineColorScale(group))
-            .attr('stroke-width', 1)
+            .attr('stroke-width', 3)
             .attr('d', ([group, values]) => d3.line()
                 .x((d) => xScale(d[1]))
                 .y((d) => yScale(d[2]))
