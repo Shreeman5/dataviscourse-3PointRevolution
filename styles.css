@@ -30,8 +30,14 @@
     position: absolute;
 }
 
-#shottypelinechart{
+#teamlinechart{
+    left: 15px;
+    top: 1000px;
+    position:absolute;
+}
+
+/* #shottypelinechart{
     left: 500px;
     top: 1200px;
     position: absolute;
-}
+} */

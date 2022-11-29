@@ -21,11 +21,11 @@ class Heatmap {
             .range([0, this.height]);
 
         // First draw heatmap for season 2010-2011 dataset
-        this.drawHeatmap(this.shotdata10_22[0]);
+        this.drawHeatmap(this.shotdata10_22[0], "");
     }
 
     // Draws heatmap with given dataset
-    drawHeatmap(shotdata) {
+    drawHeatmap(shotdata, receivedString) {
         let that = this;
         
         // colorscale uses red hue
@@ -214,25 +214,30 @@ class Heatmap {
         let binary
         let player_array = []
         shotdata.forEach(d => {
+            // console.log('A:', d.PLAYER_NAME)
+            // console.log('B: ', d.TEAM_NAME)
             player_array.push(d.PLAYER_NAME)
         })
 
-        let player_set = new Set(player_array)
-        if (player_set.size === 1){
-            binary = player_array[0]
-        }
-        else{
-            binary = ""
-        }
+
+
+        // let player_set = new Set(player_array)
+        // console.log(player_set)
+        // if (player_set.size === 1){
+        //     binary = player_array[0]
+        // }
+        // else{
+        //     binary = ""
+        // }
 
         shots.append("text")
-            .style("font", "30px times")
-            .style("font-family", "Arvo")
+            .style("font", "25px times")
+            //.style("font-family", "Arvo")
             .style("text-anchor", "middle")
             .attr('x', 400)
             .attr('y', 720)
             .attr('transform', 'rotate(180 400 376)')
-            .text(binary)
+            .text(receivedString)
 
     }
 }

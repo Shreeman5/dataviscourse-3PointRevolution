@@ -49,9 +49,6 @@ loadData().then((loadedData) => {
 
   // store loaded field goal attempt data 
   globalApplicationState.fgadata10_22 = loadedData.fgadata10_22;
-  
-  //let fgadata10_11 = d3.group(globalApplicationState.fgadata10_22[0], d=> d.SHOT_ZONE_BASIC)
-  //console.log(fgadata10_11)
 
   // Build heatmap
   globalApplicationState.heatmap = new Heatmap(globalApplicationState);
@@ -77,7 +74,7 @@ function dataSelect(selectedData) {
 
   // Draw heatmap
   let heatmap = globalApplicationState.heatmap
-  heatmap.drawHeatmap(data);
+  heatmap.drawHeatmap(data, "");
 
   // Draw player linechart
   let playerInfo = globalApplicationState.playerInfo
