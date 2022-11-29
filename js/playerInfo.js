@@ -65,15 +65,8 @@ class PlayerInfo {
                 cases.push(element[2])
             })
         }
-        
-        
-        this.neededData = this.makeArrayBetter(this.best_players, d3.extent(dates), Array.from(best_players_mapped.keys()))
-        //console.log(this.neededData)
+        console.log(best_players_mapped)
 
-        //this.best_players = this.best_players.shift()
-
-
-        //form the player chart svg
         let player_chart = d3.select('#playerlinechart')
             .attr('width', that.width)
             .attr('height', that.height)
@@ -101,6 +94,18 @@ class PlayerInfo {
                 (values)
             )
             .attr('id', 'line-paths');
+
+
+        
+        
+        this.neededData = this.makeArrayBetter(this.best_players, d3.extent(dates), Array.from(best_players_mapped.keys()))
+        console.log('B:', this.neededData)
+
+        //this.best_players = this.best_players.shift()
+
+
+        //form the player chart svg
+        
 
         // Redraw heatmap with selected player's data
         d3.selectAll('#line-paths')
@@ -162,7 +167,7 @@ class PlayerInfo {
                 almost_data.push([players[i], new_data[j], 0])
             }
         }
-        //console.log(almost_date)
+        //console.log('C:', almost_data)
 
         for (let i = 0; i < almost_data.length; i++){
             let player = almost_data[i][0]
@@ -175,7 +180,9 @@ class PlayerInfo {
                     almost_data[i][2] = data[j][2]
                 }
             }
-            if (almost_data[i][2] === 0){
+            if (almost_data[i][2] === 0 && (i-1 >= 0)){
+                // console.log('D:', i)
+                // console.log('E:', almost_data[i])
                 almost_data[i][2] = almost_data[i-1][2]
             }
         }
