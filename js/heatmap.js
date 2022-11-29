@@ -192,11 +192,7 @@ class Heatmap {
                 else{
                     fraction = d[2]/d[3]
                 }
-                
-                if (fraction === 1){
-                    return '#6F189E'
-                }
-                else if (fraction > 0 && fraction < 1){
+                if (fraction > 0 && fraction <= 1){
                     return colorScale(fraction)
                 }
                 else if (fraction === 0){

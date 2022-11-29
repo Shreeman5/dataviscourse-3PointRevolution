@@ -131,29 +131,29 @@ class PlayerInfo {
         let output = selectElement.value
         let text
         if (output === '0'){
-            text = 'Regular Season: Oct 26 - Apr 13, Playoffs: Apr 16 - May 26, Finals: May 31 - Jun 12'
+            text = '2010-2011 Season: Oct 26 - Apr 13, Playoffs: Apr 16 - May 26, Finals: May 31 - Jun 12'
         }else if (output === '1'){
-            text = 'Regular Season: Dec 25 - Apr 26, Playoffs: Apr 28 - Jun 9, Finals: Jun 12 - Jun 21'
+            text = '2011-2012 Season: Dec 25 - Apr 26, Playoffs: Apr 28 - Jun 9, Finals: Jun 12 - Jun 21'
         }else if (output === '2'){
-            text = 'Regular Season: Oct 30 - Apr 17, Playoffs: Apr 20 - Jun 3, Finals: Jun 6 - Jun 20'
+            text = '2012-2013 Season: Oct 30 - Apr 17, Playoffs: Apr 20 - Jun 3, Finals: Jun 6 - Jun 20'
         }else if (output === '3'){
-            text = 'Regular Season: Oct 29 - Apr 16, Playoffs: Apr 19 - May 31, Finals: Jun 5 - Jun 15'
+            text = '2013-2014 Season: Oct 29 - Apr 16, Playoffs: Apr 19 - May 31, Finals: Jun 5 - Jun 15'
         }else if (output === '4'){
-            text = 'Regular Season: Oct 28 - Apr 15, Playoffs: Apr 18 - May 27, Finals: Jun 4 - Jun 16'
+            text = '2014-2015 Season: Oct 28 - Apr 15, Playoffs: Apr 18 - May 27, Finals: Jun 4 - Jun 16'
         }else if (output === '5'){
-            text = 'Regular Season: Oct 27 - Apr 13, Playoffs: Apr 16 - May 30, Finals: Jun 2 - Jun 19'
+            text = '2015-2016 Season: Oct 27 - Apr 13, Playoffs: Apr 16 - May 30, Finals: Jun 2 - Jun 19'
         }else if (output === '6'){
-            text = 'Regular Season: Oct 25 - Apr 12, Playoffs: Apr 15 - May 25, Finals: Jun 1 - Jun 12'
+            text = '2016-2017 Season: Oct 25 - Apr 12, Playoffs: Apr 15 - May 25, Finals: Jun 1 - Jun 12'
         }else if (output === '7'){
-            text = 'Regular Season: Oct 17 - Apr 11, Playoffs: Apr 14 - May 28, Finals: May 31 - Jun 8'
+            text = '2017-2018 Season: Oct 17 - Apr 11, Playoffs: Apr 14 - May 28, Finals: May 31 - Jun 8'
         }else if (output === '8'){
-            text = 'Regular Season: Oct 16 - Apr 10, Playoffs: Apr 13 - May 25, Finals: May 30 - Jun 13'
+            text = '2018-2019 Season: Oct 16 - Apr 10, Playoffs: Apr 13 - May 25, Finals: May 30 - Jun 13'
         }else if (output === '9'){
-            text = 'Regular Season: Oct 22 - Aug 15, Playoffs: Aug 17 - Sep 27, Finals: Sep 30 - Oct 11'
+            text = '2019-2020 Season: Oct 22 - Aug 15, Playoffs: Aug 17 - Sep 27, Finals: Sep 30 - Oct 11'
         }else if (output === '10'){
-            text = 'Regular Season: Dec 22 - May 21, Playoffs: May 22 - Jul 3, Finals: Jul 6 - Jul 20'
+            text = '2020-2021 Season: Dec 22 - May 21, Playoffs: May 22 - Jul 3, Finals: Jul 6 - Jul 20'
         }else if (output === '11'){
-            text = 'Regular Season: Oct 19 - Apr 15, Playoffs: Apr 16 - May 29, Finals: Jun 2 - Jun 16'
+            text = '2021-2022 Season: Oct 19 - Apr 15, Playoffs: Apr 16 - May 29, Finals: Jun 2 - Jun 16'
         }
         //console.log(text)
 
@@ -166,15 +166,15 @@ class PlayerInfo {
         .style("font", "20px times")
         .style("text-anchor", "middle")
         .attr('x', 450)
-        .attr('y', 20)
+        .attr('y', 15)
         .text(text)
 
         player_chart.append("text").attr('id', 't2')
         .style("font", "15px times")
         .style("text-anchor", "middle")
         .attr('x', 450)
-        .attr('y', 740)
-        .text('Current season(in months and year)')
+        .attr('y', 750)
+        .text('Date')
 
         player_chart.append("text").attr('id', 't3')
         .style("font", "15px times")
@@ -184,7 +184,6 @@ class PlayerInfo {
         .attr('transform', 'rotate(270 400 376)')
         .text('Player points from 3 pointers')
     }
-
 
     //returns data needed for overlay line
     makeArrayBetter(data, startEnd, players){
