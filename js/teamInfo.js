@@ -18,11 +18,11 @@ class TeamInfo {
         this.pad_right = 50
         this.pad_bottom = 60
 
-        // First draw heatmap for season 2010-2011 dataset
+        // First draw linechart for season 2010-2011 dataset
         this.drawTeamInfo(this.shotdata10_22[0]);
     }
 
-
+    // Draws team linechart with given dataset
     drawTeamInfo(shotdata) {
         let that = this
 
@@ -134,7 +134,7 @@ class TeamInfo {
             }
         });
 
-        // Based on season, get starting and ending time for that season
+        // Based on season, get champions and season MVP
         let selectElement = document.getElementById('dataset-select');
         let output = selectElement.value
         let text

@@ -1,6 +1,6 @@
 class TopFifty {
     /**
-     * Creates a top Ten players Object
+     * Creates a top Fifty players Object
      */
     constructor(globalApplicationState) {
         // Import shotdata from 2010 to 2022
@@ -18,16 +18,16 @@ class TopFifty {
         this.pad_right = 50
         this.pad_bottom = 220
 
-        // First draw heatmap for season 2010-2011 dataset
+        // Draw top fifty scores of all time
         this.topFifty();
     }
 
-    // linechart for top 10 scores across 12 seasons
+    // Draw top fifty scores of all time
     topFifty() {
         let that = this
 
         let map1 = new Map();
-
+        // data for linechart
         map1.set('Ratio', [
             ['Stephen Curry', 11.42, 'images/stephencurry.png', 9660, 846, '2009-present', 'purple'], 
             ['Ray Allen', 6.86, 'images/rayallen.png', 8919, 1300, '1996-2014', '#3db042'],
@@ -83,6 +83,7 @@ class TopFifty {
             ['CJ McCollum', 6.96, 'images/cjmccollum.png', 4227, 607, '2013-present', '#0c230d']
     ]);
 
+        // extract arrays to be used later
         let players = []
         let cases = []
         let full = []
@@ -133,6 +134,8 @@ class TopFifty {
             )
             .attr('id', 'line-paths-2');
 
+
+        // draw circles for each point in the linechart
         this.selectCircle = team_chart.selectAll(".circle").data(full)
 
         this.players = this.selectCircle.enter().append("circle")
@@ -148,19 +151,20 @@ class TopFifty {
                 return d[6]
             })
         
-        
+        // append tip for each circle
         let tip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 10)
         this.players.on("mouseover", function(e, d) {
             tip.style("opacity", 5)
                 .html("<img src='"+d[2]+"'width='200'height='200'></img> <br><span style='font-size: 20px;'>Player: "+d[0]+"</span> <br><span style='font-size: 20px;'>3 pointers total: "+d[3]+"</span><br> <span style='font-size: 20px;'>Total Games Played: "+d[4]+"</span> <br><span style='font-size: 20px;'>Ratio of above 2: "+d[1]+"</span> <br> <span style='font-size: 20px;'>Career: "+d[5]+"</span>")
-                .style("left", (e.clientX - 40) + "px")
-                .style("top", (e.clientY - 40) + "px")
+                .style("left", (e.pageX) + "px")
+                .style("top", (e.pageY) + "px")
             //d.style("stroke", "black")
         })//.classed("circle", true)
         .on("mouseout", function(d) {
             tip.style("opacity", 0)
         })
 
+        // append text and legend for this linechart
         team_chart.append("text").attr('id', 't1')
         .style("font", "30px times")
         .style("text-anchor", "middle")

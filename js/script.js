@@ -43,6 +43,7 @@ const globalApplicationState = {
 
 // ******* APPLICATION MOUNTING *******
 loadData().then((loadedData) => {
+  // code for overlay
   button = document.getElementById("button")
     button.addEventListener('click', function(e) {
         this.overlay_svg = d3.select('body')
@@ -52,68 +53,128 @@ loadData().then((loadedData) => {
             .style('position', 'fixed')
             .style('left', 0)
             .style('top', 0)
-            .style('background-color', 'blue')
-            .style('opacity', '.2')
+            .style('background-color', 'white')
+            .style('opacity', '0.7')
 
-        //this.overlay_svg.append('line').style("stroke", "black").style("stroke-width", 5).attr("x1", 2650).attr("y1", 900).attr("x2", 2650).attr("y2", 912)
+        this.overlay_svg.append('text').attr("x", 1675).attr("y", 40).
+          text("CLICK ANYWHERE TO EXIT OVERLAY!")
+          .style("text-anchor", "middle").style("font-weight",  "bold")
+          .style("font-size", "40").style('fill', 'black')
+
         this.overlay_svg.append('rect').style("stroke", "black").attr('fill', 'white').attr("x", 2150).attr("y", 1060).attr("width", 1200).attr("height", 900)
         
-        this.overlay_svg.append('text').attr("x", 2750).attr("y", 1080).
+        this.overlay_svg.append('text').attr("x", 2750).attr("y", 1100).
             text("THE 3 POINT REVOLUTION(featuring Stephen Curry)")
             .style("text-anchor", "middle").style("font-weight",  "bold")
-            .style("font-size", "25px").style('fill', 'blue')
+            .style("font-size", "40").style('fill', 'black')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1130)
-        text("Context for the graph above: ")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1150)
+        .text("How to use the graph above? ")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#8B0000')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1180)
-        text("- Hover over the circles. Each circle represents a player and for this player, his 3 pointers total, total games played, ratio of the previous 2 things and career stat is shown.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        .text("- Hover over the circles. Each circle represents a player and for each player, his 3 pointers total, total games")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1230)
-        text("- The graph shows the top 52 players, of all time, for 3 pointers scored. NBA's website has records for 2560 players in total.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1210)
+        .text("played, ratio of the previous 2 things and career(start to end year) stat is shown.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1280)
-        text("- From left to right, we have the top 52 players by total points from 3 pointers. Stephen Curry, the first circle, leads the charge with 9660 points and CJ McCollum, the last circle, has 4227 points.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1330)
-        text("- From these 52 players, Buddy Hield has played the least number of games at 488(active) and Dirk Nowitzki has played the most, at 1522(retired).")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1260)
+        .text("Intereseting/General stats from the graph: ")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#8B0000')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1290)
+        .text("- The graph shows the top 52 players, of all time, for 3 pointers scored. NBA's website has records for 2560")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1320)
+        .text("players in total. These 3 pointers are from the regular season(which means we exclude playoffs and finals).")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1350)
+        .text("- From left to right, we have the top 52 players by total points from 3 pointers. Stephen Curry, the first")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1380)
-        text("- Having a lot of 3 pointers is not an indication of efficieny. Efficiency is calculated as a ratio of 3 pointers total to total games played. Ratio is shown in the y axis.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        .text("circle, leads the charge with 9660 points and CJ McCollum, the last circle, has 4227 points.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1430)
-        text("- Even though Reggie Miller is 4th all time for 3 pointers total, almost half(23) of the players are more efficient than him.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1410)
+        .text("- From these 52 players, Buddy Hield has played the least number of games at 488(active) and Dirk Nowitzki")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1480)
-        text("- Stephen Curry, therefore, is the G.O.A.T when it comes to 3 pointers. He has the most points and the best ratio. Buddy Hield might be catching up to him though.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1440)
+        .text("has played the most, at 1522(retired).")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1180)
-        text("- Of the 52 players, 22 are still active, 14 retired between 2016-22 or were undrafted for 2023, 9 retired between 2010-16, 7 retired before 2010.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1470)
+        .text("- Having a lot of 3 pointers is not an indication of efficieny. Efficiency is calculated as a ratio of 3")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1500)
+        .text("pointers total to total games played. Ratio is shown in the y axis.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1530)
-        text("- Given that the NBA started keeping records from 1946, it is unusual that players who started before 1983 do not show up once in this graph. Dale Ellis, the earliest player in this graph, started his career in 1983.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        .text("- For instance, even though Reggie Miller is 4th all time for 3 pointers total, almost half(23) of the")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1580)
-        text("- Inference being the best explanation, it can be reasonably inferred that scoring 3 pointers is a recent phenomena.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
-        
-        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1630)
-        text("- The fact that almost half of the top 52 players are still active gives credence to this inference.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1560)
+        .text("the players are more efficient than him.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1590)
+        .text("- Stephen Curry, therefore, is the G.O.A.T when it comes to 3 pointers. He has the most points and the")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1620)
+        .text("best ratio. Buddy Hield might be catching up to him though.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1650)
+        .text("- Of the 52 players, 22 are still active, 14 retired between 2016-22 or were undrafted for 2023, 9")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1680)
-        text("- The fact that 45 the top 52 players are still playing/undrafted for 2023/retired after 2010 gives credence to this inference.")
-        .style("font-weight", "bold").style("font-size", "20px").style('fill', 'blue')
+        .text("retired between 2016-22 or were undrafted for 2023, 9 retired between 2010-16, 7 retired before 2010.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1730)
+        .text("Inferences/Conclusions from the graph: ")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#8B0000')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1760)
+        .text("- Given that the NBA started keeping records from 1946, it is unusual that players who started before 1983")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1790)
+        .text("do not show up once in this graph. Dale Ellis, the earliest player in this graph, started his career in 1983.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1820)
+        .text("- Inference being the best explanation, it can be reasonably inferred that scoring 3 pointers is a recent")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1850)
+        .text("phenomena.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+        
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1880)
+        .text("- The fact that almost half of the top 52 players are still active gives credence to this inference.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1910)
+        .text("- The fact that 45 of the top 52 players are still playing/undrafted for 2023/retired after 2010 gives credence to")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+
+        this.overlay_svg.append('text').attr("x", 2150).attr("y", 1940)
+        .text("this inference.")
+        .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
         
 
         let that = this
@@ -146,7 +207,7 @@ loadData().then((loadedData) => {
   // // Build court
   globalApplicationState.court = new Court();
 
-  // // Build top 10 linechart
+  // // Build top 50 linechart
   globalApplicationState.topFifty = new TopFifty(globalApplicationState);
 });
 

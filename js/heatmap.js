@@ -32,7 +32,7 @@ class Heatmap {
         let colorScale = d3.scaleSequential(d3.interpolateReds)
             .domain([0, 1]);
 
-        // Remove old rectangles
+        // Bookkeeping
         d3.select('#heatmap').selectAll('rect').remove();
         d3.select('#heatmap').select('g').remove();
         d3.select('#heatmap').selectAll('text').remove();
@@ -40,7 +40,7 @@ class Heatmap {
         d3.select('#heatmap').select('#t2').remove()
 
 
-        // draw a small circle to show each 
+        // declare heatmap 
         let shots = d3.select('#heatmap')
             .attr('width', that.width)
             .attr('height', that.height)
@@ -49,6 +49,7 @@ class Heatmap {
             .attr('width', that.width)
             .attr('height', that.height);
 
+        // remove rectangles that come inside the 3 point line
         let data = []
         for (let i = 0; i < 800; i += 8){
             for (let j = 0; j < 751; j += 9.4){
@@ -148,14 +149,8 @@ class Heatmap {
                 }
             }
         }
-
-        // for (let i = 0; i < data.length; i++){
-        //     if (data[i][0] >= 48){
-        //         data.splice(i+1, 1)
-        //     }
-        // }
         
-
+        // data for qualifying rectangles
         shotdata.forEach(d => {
             let cx = that.xScale(parseInt(d.LOC_X))
             let cy = that.yScale(parseInt(d.LOC_Y))
@@ -171,9 +166,9 @@ class Heatmap {
                 }
             }
         })
-        //console.log(data)
-
         
+
+        // Fill svg with color-coded rectangles to create heatmap
         shots
             .selectAll('rect')
             .data(data)
@@ -213,7 +208,7 @@ class Heatmap {
         d3.select('.shot-positions')
             .attr('transform', 'rotate(180 400 376)');
 
-        
+        // Show player or team text from the other linecharts
         shots.append("text")
         .style("font", "25px times")
         //.style("font-family", "Arvo")
@@ -225,6 +220,7 @@ class Heatmap {
         
         
         console.log(receivedString)
+        // Show team and/or player picture from other linecharts
         let path1
         let path2
         if (receivedString === 'Ray Allen'){
@@ -489,9 +485,7 @@ class Heatmap {
             //Minnesota Timberwolves
             path1 = 'images/malikbeasley.png'
             path2 = 'images/minnesotatimberwolves.png'
-        }
-        
-        else if (receivedString === 'Orlando Magic'){
+        }else if (receivedString === 'Orlando Magic'){
             path1 = 'images/orlandomagic.png'
         }else if (receivedString === 'New York Knicks'){
             path1 = 'images/newyorkknicks.png'

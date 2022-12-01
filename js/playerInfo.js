@@ -22,7 +22,7 @@ class PlayerInfo {
         this.drawPlayerInfo(this.shotdata10_22[0]);
     }
 
-    // Draws heatmap with given dataset
+    // Draws player linechart with given dataset
     drawPlayerInfo(shotdata) {
         let that = this
 
