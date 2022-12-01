@@ -88,8 +88,7 @@ class TeamInfo {
 
         // data needed for overlay line        
         this.neededData = this.makeArrayBetter(this.best_teams, d3.extent(dates), Array.from(best_teams_mapped.keys()))
-        console.log(this.neededData)
-
+        //console.log(this.neededData)
 
         // Redraw heatmap with selected team's data
         d3.selectAll('#line-paths-1')
@@ -101,7 +100,6 @@ class TeamInfo {
                 let heatmap = that.globalApplicationState.heatmap;
                 heatmap.drawHeatmap(required_data, d[0])
          });
-
 
          // use this.needed data here to make overlay line
         team_chart.on('mousemove', (event) => {

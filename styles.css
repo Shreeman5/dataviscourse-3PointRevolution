@@ -32,12 +32,12 @@
 
 #teamlinechart{
     left: 15px;
-    top: 1100px;
+    top: 1050px;
     position:absolute;
 }
 
 #shottypelinechart{
-    left: 915;
-    top: 1100px;
+    left: 915px;
+    top: 1050px;
     position: absolute;
 } 
