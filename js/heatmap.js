@@ -154,13 +154,6 @@ class Heatmap {
             }
         }
 
-        // for (let i = 0; i < data.length; i++){
-        //     if (data[i][0] >= 48){
-        //         data.splice(i+1, 1)
-        //     }
-        // }
-        
-
         shotdata.forEach(d => {
             let cx = that.xScale(parseInt(d.LOC_X))
             let cy = that.yScale(parseInt(d.LOC_Y))
@@ -218,17 +211,6 @@ class Heatmap {
             // console.log('B: ', d.TEAM_NAME)
             player_array.push(d.PLAYER_NAME)
         })
-
-
-
-        // let player_set = new Set(player_array)
-        // console.log(player_set)
-        // if (player_set.size === 1){
-        //     binary = player_array[0]
-        // }
-        // else{
-        //     binary = ""
-        // }
 
         shots.append("text")
             .style("font", "25px times")
