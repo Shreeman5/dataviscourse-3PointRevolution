@@ -95,11 +95,11 @@ loadData().then((loadedData) => {
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1350)
-        .text("- From left to right, we have the top 52 players by total points from 3 pointers. Stephen Curry, the first")
+        .text("- From left to right, in descending order, we have the top 52 players by total points from 3 pointers. Stephen")
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1380)
-        .text("circle, leads the charge with 9660 points and CJ McCollum, the last circle, has 4227 points.")
+        .text("Curry, the first circle, leads the charge with 9660 points and CJ McCollum, the last circle, has 4227 points.")
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1410)
