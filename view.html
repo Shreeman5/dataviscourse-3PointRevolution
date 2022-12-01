@@ -11,6 +11,7 @@
     <script src="js/playerInfo.js"></script>
     <script src="js/teamInfo.js"></script>
     <script src="js/shottype.js"></script>
+    <script src="js/stephencurry.js"></script>
 </head>
 
 <body id="body">
@@ -34,6 +35,7 @@
             <option value="11">2021-2022</option>
         </select>
         <button type="button" onclick="getValue()">Reset Heatmap</button>
+        <button id ="button">Stephen Curry</button>
     </header>
     <div class="view">   
 
@@ -54,6 +56,11 @@
         <svg id="shottypelinechart">
         </svg>
         <svg id="court">
+        </svg>
+        <svg id="threepointrev">
+            <g id="x-axis"></g>
+            <g id="y-axis"></g>
+            <g id="line"></g>
         </svg>
     </div>
 </body>

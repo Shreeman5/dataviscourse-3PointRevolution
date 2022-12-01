@@ -1,6 +1,6 @@
 class TeamInfo {
     /**
-     * Creates a Heatmap Object
+     * Creates a Team Info Object
      */
     constructor(globalApplicationState) {
         // Import shotdata from 2010 to 2022
@@ -11,12 +11,12 @@ class TeamInfo {
         this.height = 752;
 
         // svg width
-        this.width = 900;
+        this.width = 1200;
         
         // svg padding
         this.pad_left = 80
         this.pad_right = 50
-        this.pad_bottom = 40
+        this.pad_bottom = 60
 
         // First draw heatmap for season 2010-2011 dataset
         this.drawTeamInfo(this.shotdata10_22[0]);
@@ -56,7 +56,7 @@ class TeamInfo {
                 cases.push(element[2])
             })
         }
-        //console.log(best_teams_mapped)
+        console.log(best_teams_mapped)
 
         // draw team line chart svg using the data obtained from data processing
         let team_chart = d3.select('#teamlinechart')
@@ -66,12 +66,17 @@ class TeamInfo {
         let xScale = d3.scaleTime().domain(d3.extent(dates)).range([this.pad_left, this.width - this.pad_right]).nice();
         let xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat("%b %Y"));
         team_chart.select("#x-axis").attr("transform", "translate(0," + (this.height - this.pad_bottom) + ")").call(xAxis)
+        .selectAll("text")
+        .style("font", "20px times")
 
         let yScale = d3.scaleLinear().domain([0, d3.max(cases)]).range([this.height - this.pad_bottom, 40]).nice();
         let yAxis = d3.axisLeft().scale(yScale);
         team_chart.select("#y-axis").attr("transform", "translate(" + this.pad_left + ",0)").call(yAxis)
+        .selectAll("text")
+        .style("font", "20px times")
 
-        let lineColorScale = d3.scaleOrdinal(d3.schemeTableau10).domain(best_teams_mapped.keys())
+        let lineColorScale = d3.scaleOrdinal().domain(best_teams_mapped.keys())
+            .range(["#494444", "#726f6f", "#8b8989", '#aaaaaa', "#bbbbbb"])
         team_chart.select('#lines')
             .selectAll('path')
             .data(best_teams_mapped)
@@ -88,7 +93,7 @@ class TeamInfo {
 
         // data needed for overlay line        
         this.neededData = this.makeArrayBetter(this.best_teams, d3.extent(dates), Array.from(best_teams_mapped.keys()))
-        console.log(this.neededData)
+        //console.log(this.neededData)
 
 
         // Redraw heatmap with selected team's data
@@ -105,9 +110,9 @@ class TeamInfo {
 
          // use this.needed data here to make overlay line
         team_chart.on('mousemove', (event) => {
-            if (event.offsetX > this.pad_left && event.offsetX < 900 - this.pad_right) {
+            if (event.offsetX > this.pad_left && event.offsetX < this.width - this.pad_right) {
                 // Set the line position
-                team_chart.select('#overlay').select('line').attr('stroke', 'black').attr('x1', event.offsetX).attr('x2', event.offsetX).attr('y1', 752 - this.pad_bottom).attr('y2', 20);
+                team_chart.select('#overlay').select('line').attr('stroke', 'black').attr('x1', event.offsetX).attr('x2', event.offsetX).attr('y1', this.height - this.pad_bottom).attr('y2', 20);
                 const yearHovered = new Date(Math.floor(xScale.invert(event.offsetX)))
 
                 // filter data for that time
@@ -121,11 +126,11 @@ class TeamInfo {
                 .data(filteredData)
                 .join('text')
                 .text(d=>`${d[0]}, ${d[2]}`)
-                .attr('x', event.offsetX < 700 ? event.offsetX : event.offsetX - 210)
+                .attr('x', event.offsetX < 700 ? event.offsetX : event.offsetX - 260)
                 .attr('y', event.offsetX < 450 ? (d, i) => 25*i + 30 : (d, i) => 25*i + 400)
                 .attr('alignment-baseline', 'hanging')
                 .attr('fill', (d) => lineColorScale(d[0]))
-                .attr("font-weight", 700)
+                .style("font", "20px times")
             }
         });
 
@@ -166,24 +171,24 @@ class TeamInfo {
         d3.select('#teamlinechart').select('#t3').remove()
 
         team_chart.append("text").attr('id', 't1')
-        .style("font", "20px times")
+        .style("font", "30px times")
         .style("text-anchor", "middle")
-        .attr('x', 450)
+        .attr('x', this.width/2)
         .attr('y', 20)
         .text(text)
 
         team_chart.append("text").attr('id', 't2')
-        .style("font", "15px times")
+        .style("font", "25px times")
         .style("text-anchor", "middle")
-        .attr('x', 450)
+        .attr('x', this.width/2)
         .attr('y', 740)
         .text('Current season(in months and year)')
 
         team_chart.append("text").attr('id', 't3')
-        .style("font", "15px times")
+        .style("font", "25px times")
         .style("text-anchor", "middle")
         .attr('x', 400)
-        .attr('y', 10)
+        .attr('y', 0)
         .attr('transform', 'rotate(270 400 376)')
         .text('Team points from 3 pointers')
     }

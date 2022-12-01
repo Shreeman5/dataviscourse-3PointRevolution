@@ -41,3 +41,20 @@
     top: 1200px;
     position: absolute;
 } */
+
+#threepointrev{
+    left: 2150px;
+    top:220px;
+    position: absolute;
+}
+
+.tooltip {
+    position: absolute;
+    pointer-events: none;
+    background-color: white;
+    color: black;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
