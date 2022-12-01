@@ -270,22 +270,6 @@ class ShotType {
             .attr('stroke', 'black')
             .attr('text-anchor', 'left')
             .attr('transform',"translate(722, 252)")    
-
-        // append axis descriptions
-        team_chart.append("text").attr('id', 't2')
-            .style("font", "15px times")
-            .style("text-anchor", "middle")
-            .attr('x', 450)
-            .attr('y', 740)
-            .text('Current season(in months and year)')
-
-        team_chart.append("text").attr('id', 't3')
-            .style("font", "15px times")
-            .style("text-anchor", "middle")
-            .attr('x', 400)
-            .attr('y', 10)
-            .attr('transform', 'rotate(270 400 376)')
-            .text('Team points from 3 pointers')
         
         // append title 
         d3.select('#shottypelinechart')
@@ -295,7 +279,5 @@ class ShotType {
             .attr('text-anchor', 'middle')
             .attr('transform',"translate(450, 40)")
             .style("font", "25px times")
-
-
     }
 }
