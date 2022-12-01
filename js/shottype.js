@@ -37,18 +37,15 @@ class ShotType {
             season.forEach(function(d) {
                 // Paint 
                 if (d.SHOT_ZONE_BASIC == "Restricted Area" || d.SHOT_ZONE_BASIC == "In The Paint (Non-RA)"){
-                    //console.log(d)
                     paint++;
                 }
                 // Midrange
                 else if (d.SHOT_ZONE_BASIC == "Mid-Range"){
-                    //console.log(d)
                     mid++;
                 }
                 // 3 pointer
                 else if (d.SHOT_ZONE_BASIC == "Right Corner 3" || d.SHOT_ZONE_BASIC == "Left Corner 3"
                       || d.SHOT_ZONE_BASIC == "Backcourt" || d.SHOT_ZONE_BASIC == "Above the Break 3"){
-                    //console.log(d)
                     three++;
                 }
             });
@@ -135,8 +132,6 @@ class ShotType {
                 .attr('stroke', 'black')
                 .attr('text-anchor', 'middle')
                 .attr('transform', function(d){
-                    console.log(element)
-                    console.log(yScale(element))
                     let v = yScale(element) + 5
                     return "translate(50," + String(v) +")";
                 })
@@ -144,8 +139,6 @@ class ShotType {
 
         // append x axis tick labels
         xAxisLabels.forEach(function(d){
-            console.log(d)
-            console.log(xScale(d))
             shotTypeChart.select('.shottypechart-axis-ticks')
                 .append('line')
                 .attr('x1', 55.83 + xScale(d))
@@ -185,7 +178,6 @@ class ShotType {
                 .attr('y1', function(d) {
                     let v = data[x].paint / data[x].total
                     let y =  yScale(v);
-                    console.log(v)
                     return parseFloat(y);
                 })
                 .attr('x2', 55.83 + xScale(data[x+1].year))
@@ -205,7 +197,6 @@ class ShotType {
                 .attr('y1', function(d) {
                     let v = data[x].mid / data[x].total
                     let y =  yScale(v);
-                    console.log(v)
                     return parseFloat(y);
                 })
                 .attr('x2', 55.83 + xScale(data[x+1].year))
@@ -225,7 +216,6 @@ class ShotType {
                 .attr('y1', function(d) {
                     let v = data[x].three / data[x].total
                     let y =  yScale(v);
-                    console.log(v)
                     return parseFloat(y);
                 })
                 .attr('x2', 55.83 + xScale(data[x+1].year))
