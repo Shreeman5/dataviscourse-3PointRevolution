@@ -51,6 +51,14 @@ class Heatmap {
 
         // remove rectangles that come inside the 3 point line
         let data = []
+        let new_j = 0;
+        let old_j = 0;
+        let diff = 0;
+        let inc_x = 8;
+        let inc_y = 9.4;
+        let k = 0;
+        let l = 225.6;
+        let target = 0;
         for (let i = 0; i < 800; i += 8){
             for (let j = 0; j < 751; j += 9.4){
                 if ((i === 48 || i === 744) && j.toFixed(1) <= 225.6){
@@ -162,7 +170,6 @@ class Heatmap {
                 if (cx >= smallX && cx < bigX && cy >= smallY && cy < bigY){
                     data[i][2] = data[i][2] + parseInt(d.SHOT_MADE_FLAG)
                     data[i][3] = data[i][3] + parseInt(d.SHOT_ATTEMPTED_FLAG)
-                    break;
                 }
             }
         })
@@ -190,14 +197,7 @@ class Heatmap {
                 else{
                     fraction = d[2]/d[3]
                 }
-                
-                if (fraction === 1){
-                    return '#6F189E'
-                }
-                else if (fraction > 0 && fraction < 1){
-                    return colorScale(fraction)
-                }
-                else if (fraction === 0){
+                if (fraction >= 0 && fraction <= 1){
                     return colorScale(fraction)
                 }
                 else if (fraction === -1){
