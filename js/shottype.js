@@ -26,8 +26,6 @@ class ShotType {
 
     drawShotTypeChart(fgadata10_22){
         let that = this;
-        let fgaByType10_11 = d3.group(fgadata10_22[0], d=> d.SHOT_ZONE_BASIC)
-        console.log(fgaByType10_11);
 
         // divide data by shot type:
         let fgaByType10_22 = [];
@@ -54,9 +52,9 @@ class ShotType {
                     three++;
                 }
             });
+            
             // save season stats 
             year = "20" + String(i) + "-" + String(i+1);
-            console.log(year)
             total = paint + mid + three;
             stats = {year: year, paint: paint, mid: mid, three: three, total: total}
             fgaByType10_22.push(stats);
@@ -64,8 +62,6 @@ class ShotType {
             paint = 0, mid = 0, three = 0, total = 0;
             i++;
         }
-        console.log(fgaByType10_22)
-
 
         let shotTypeChart = d3.select('#shottypelinechart')
             .attr('width', that.width)
@@ -121,7 +117,6 @@ class ShotType {
                 .attr('y2', yScale(d))
                 .attr('stroke', 'black')
                 .attr('stroke_weight', 3)
-            
         });
 
         shotTypeChart.append('g')
@@ -134,16 +129,18 @@ class ShotType {
             shotTypeChart.select('.shottypechart-axis-labels')
                 .append('text')
                 .text(function(d) {
-                    return element;
+                    let t = element * 100;
+                    return String(t) + "%";
                 })
                 .attr('stroke', 'black')
                 .attr('text-anchor', 'middle')
                 .attr('transform', function(d){
                     console.log(element)
                     console.log(yScale(element))
-                    return "translate(50," + yScale(element) + 5 +")";
+                    let v = yScale(element) + 5
+                    return "translate(50," + String(v) +")";
                 })
-            });    
+            });
 
         // append x axis tick labels
         xAxisLabels.forEach(function(d){
@@ -169,16 +166,146 @@ class ShotType {
                 .attr('stroke', 'black')
                 .attr('text-anchor', 'middle')
                 .attr('transform', function(d){
-                    console.log(element)
-                    console.log(xScale(element))
                     return "translate(" + String(xScale(element)+55.83) + ", " + (that.height - that.pad_bottom + 30)  +")";
                 })
-            });    
+            });
+       
+        // append paint line
+        let lineChart = d3.select('#shottypelinechart')
+            .append('g')
+            .attr('class', 'shottypechart-lines')
+            .attr('width', that.width)
+            .attr('height', that.height)
 
-        // append data lines (paint/total, mid/total, three/total)
+        for (let x = 0; x < fgaByType10_22.length - 1; x++) {
+            let data = fgaByType10_22;
+            lineChart
+                .append('line')
+                .attr('x1', 55.83 + xScale(data[x].year))
+                .attr('y1', function(d) {
+                    let v = data[x].paint / data[x].total
+                    let y =  yScale(v);
+                    console.log(v)
+                    return parseFloat(y);
+                })
+                .attr('x2', 55.83 + xScale(data[x+1].year))
+                .attr('y2', function(d) {
+                    let y =  yScale(data[x+1].paint / data[x+1].total);
+                    return parseFloat(y);
+                })
+                .attr('stroke', 'blue')
+        }
         
-
-
+        // append mid line
+        for (let x = 0; x < fgaByType10_22.length - 1; x++) {
+            let data = fgaByType10_22;
+            lineChart
+                .append('line')
+                .attr('x1', 55.83 + xScale(data[x].year))
+                .attr('y1', function(d) {
+                    let v = data[x].mid / data[x].total
+                    let y =  yScale(v);
+                    console.log(v)
+                    return parseFloat(y);
+                })
+                .attr('x2', 55.83 + xScale(data[x+1].year))
+                .attr('y2', function(d) {
+                    let y =  yScale(data[x+1].mid / data[x+1].total);
+                    return parseFloat(y);
+                })
+                .attr('stroke', 'red')
+        }
+        
+        // append 3 line
+        for (let x = 0; x < fgaByType10_22.length - 1; x++) {
+            let data = fgaByType10_22;
+            lineChart
+                .append('line')
+                .attr('x1', 55.83 + xScale(data[x].year))
+                .attr('y1', function(d) {
+                    let v = data[x].three / data[x].total
+                    let y =  yScale(v);
+                    console.log(v)
+                    return parseFloat(y);
+                })
+                .attr('x2', 55.83 + xScale(data[x+1].year))
+                .attr('y2', function(d) {
+                    let y =  yScale(data[x+1].three / data[x+1].total);
+                    return parseFloat(y);
+                })
+                .attr('stroke', 'green')
+        }
         // append legend
+        d3.select('#shottypelinechart')
+            .append('rect')
+            .attr('x', 700)
+            .attr('y', 200)
+            .attr('width', '15')
+            .attr('height', '15')
+            .attr('fill', 'blue')
+        
+        d3.select('#shottypelinechart')
+            .append('text')
+            .text("Paint")
+            .attr('stroke', 'black')
+            .attr('text-anchor', 'middle')
+            .attr('transform',"translate(740, 212)")
+
+        d3.select('#shottypelinechart')
+            .append('rect')
+            .attr('x', 700)
+            .attr('y', 220)
+            .attr('width', '15')
+            .attr('height', '15')
+            .attr('fill', 'red')
+
+            d3.select('#shottypelinechart')
+            .append('text')
+            .text("Mid-Range")
+            .attr('stroke', 'black')
+            .attr('text-anchor', 'middle')
+            .attr('transform',"translate(760, 233)")
+
+        d3.select('#shottypelinechart')
+            .append('rect')
+            .attr('x', 700)
+            .attr('y', 240)
+            .attr('width', '15')
+            .attr('height', '15')
+            .attr('fill', 'green')
+
+        d3.select('#shottypelinechart')
+            .append('text')
+            .text("Three Point")
+            .attr('stroke', 'black')
+            .attr('text-anchor', 'left')
+            .attr('transform',"translate(722, 252)")    
+
+        // append axis descriptions
+        team_chart.append("text").attr('id', 't2')
+            .style("font", "15px times")
+            .style("text-anchor", "middle")
+            .attr('x', 450)
+            .attr('y', 740)
+            .text('Current season(in months and year)')
+
+        team_chart.append("text").attr('id', 't3')
+            .style("font", "15px times")
+            .style("text-anchor", "middle")
+            .attr('x', 400)
+            .attr('y', 10)
+            .attr('transform', 'rotate(270 400 376)')
+            .text('Team points from 3 pointers')
+        
+        // append title 
+        d3.select('#shottypelinechart')
+            .append('text')
+            .text("Percentage of Shot Type Attempts by Season")
+            .attr('stroke', 'black')
+            .attr('text-anchor', 'middle')
+            .attr('transform',"translate(450, 40)")
+            .style("font", "25px times")
+
+
     }
 }
