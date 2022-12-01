@@ -119,11 +119,11 @@ loadData().then((loadedData) => {
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1530)
-        .text("- For instance, even though Reggie Miller is 4th all time for 3 pointers total, almost half(23) of the")
+        .text("- For instance, even though Reggie Miller is 4th all time for 3 pointers total, almost half(23) of the players are")
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1560)
-        .text("the players are more efficient than him.")
+        .text("more efficient than him. Lou Williams is the least efficient at 3.89(4371 points in 1123 games).")
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1590)
@@ -161,7 +161,7 @@ loadData().then((loadedData) => {
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1850)
-        .text("phenomena.")
+        .text("phenomena. Specifically, scoring 3 pointers became popular around 2010, giving weight to our hypothesis.")
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
         
         this.overlay_svg.append('text').attr("x", 2150).attr("y", 1880)

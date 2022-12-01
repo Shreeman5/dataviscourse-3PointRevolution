@@ -73,7 +73,7 @@ class TopFifty {
             ['Kevin Love', 5.45, 'images/kevinlove.png', 4509, 828, '2008-present', '#0c230d'],
             ['Manu Ginobili', 4.24, 'images/manuginobili.png', 4485, 1057, '1995-2018', '#256a28'],
             ['Buddy Hield', 9.15, 'images/buddyhield.png', 4464, 488, '2016-present', '#0c230d'], 
-            ['Nicolas Batum', 4.76, 'images/nicolasbatum.png', 4455, '2006-present', '#0c230d'],
+            ['Nicolas Batum', 4.76, 'images/nicolasbatum.png', 4455, 938, '2006-present', '#0c230d'],
             ['Patty Mills', 5.24, 'images/pattymills.png', 4404, 840, '2009-present', '#0c230d'],
             ['Bradley Beal', 6.65, 'images/bradleybeal.png', 4386, 660, '2012-present', '#0c230d'],
             ['Lou Williams', 3.89, 'images/louwilliams.png', 4371, 1123, '2005-2022', '#256a28'],
@@ -169,7 +169,7 @@ class TopFifty {
         .style("font", "30px times")
         .style("text-anchor", "middle")
         .attr('x', this.width/2)
-        .attr('y', 20)
+        .attr('y', 25)
         .text('Top 52 players(of all time) by 3 pointers scored')
 
         team_chart.append("text")
