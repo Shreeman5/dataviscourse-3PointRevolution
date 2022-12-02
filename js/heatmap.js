@@ -22,6 +22,7 @@ class Heatmap {
 
         // First draw heatmap for season 2010-2011 dataset
         this.drawHeatmap(this.shotdata10_22[0], "");
+        this.drawLegend();
     }
 
     // Draws heatmap with given dataset
@@ -51,14 +52,6 @@ class Heatmap {
 
         // remove rectangles that come inside the 3 point line
         let data = []
-        let new_j = 0;
-        let old_j = 0;
-        let diff = 0;
-        let inc_x = 8;
-        let inc_y = 9.4;
-        let k = 0;
-        let l = 225.6;
-        let target = 0;
         for (let i = 0; i < 800; i += 8){
             for (let j = 0; j < 751; j += 9.4){
                 if ((i === 48 || i === 744) && j.toFixed(1) <= 225.6){
@@ -158,13 +151,6 @@ class Heatmap {
             }
         }
 
-        // for (let i = 0; i < data.length; i++){
-        //     if (data[i][0] >= 48){
-        //         data.splice(i+1, 1)
-        //     }
-        // }
-        
-
         shotdata.forEach(d => {
             let cx = that.xScale(parseInt(d.LOC_X))
             let cy = that.yScale(parseInt(d.LOC_Y))
@@ -222,17 +208,6 @@ class Heatmap {
             // console.log('B: ', d.TEAM_NAME)
             player_array.push(d.PLAYER_NAME)
         })
-
-
-
-        // let player_set = new Set(player_array)
-        // console.log(player_set)
-        // if (player_set.size === 1){
-        //     binary = player_array[0]
-        // }
-        // else{
-        //     binary = ""
-        // }
 
         shots.append("text")
         .style("font", "25px times")
@@ -567,6 +542,69 @@ class Heatmap {
             .attr('width', 100)
             .attr('height', 100)
             .attr("xlink:href", path2)
-
+  
     }
+
+    drawLegend(){
+        let that = this;
+        // colorscale uses red hue
+        let colorScale = d3.scaleSequential(d3.interpolateReds)
+            .domain([0, 1]);
+        
+        d3.select('#legend')
+        .attr('width', that.width)
+        .attr('height', that.height)
+        .append('defs')
+        .append('linearGradient')
+        .attr('id', 'color-gradient');
+      
+      let grad0 = d3.color(colorScale(0)).formatHex();
+      let grad30 = d3.color(colorScale(0.3)).formatHex();
+      let grad60 = d3.color(colorScale(0.6)).formatHex();
+      let grad100 = d3.color(colorScale(1)).formatHex();
+   
+      let str0 = 'stop-color:' + grad0 + ';stop-opacity:1';
+      let str30 = 'stop-color:' + grad30 + ';stop-opacity:1';
+      let str60 = 'stop-color:' + grad60 + ';stop-opacity:1';
+      let str100 = 'stop-color:' + grad100 + ';stop-opacity:1';
+  
+      let colorGradient = d3.select('#color-gradient');
+      colorGradient.append('stop')
+        .attr('offset', '0%')
+        .attr('style', str0);
+      colorGradient.append('stop')
+        .attr('offset', '30%')
+        .attr('style', str30);
+      colorGradient.append('stop')
+        .attr('offset', '60%')
+        .attr('style', str60);
+      colorGradient.append('stop')
+        .attr('offset', '100%')
+        .attr('style', str100);
+        
+      d3.select('#legend')
+        .append('rect')
+        .attr('width', 180)
+        .attr('x', 550)
+        .attr('y', 727)
+        .attr('height', 22)
+        .attr('fill', 'url(#color-gradient)');
+      
+      // Add legend text
+      d3.select('#legend')
+        .append('text')
+        .text('0%')
+        .style("font-size", "20px")
+        .attr('x', 540)
+        .attr('y', 720)
+        .attr('text-align', 'middle');    ;
+
+      d3.select('#legend')
+        .append('text')
+        .text('100%')
+        .style("font-size", "20px")
+        .attr('x', 700)
+        .attr('y', 720)
+        .attr('text-align', 'middle');    
+}
 }

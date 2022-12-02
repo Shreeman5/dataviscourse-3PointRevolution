@@ -31,21 +31,27 @@
 }
 
 #teamlinechart{
-    left: 15px;
+    left: 900px;
     top: 1050px;
     position:absolute;
 }
 
 #shottypelinechart{
-    left: 915px;
+    left: 0px;
     top: 1050px;
     position: absolute;
 
-} */
+} 
 
 #threepointrev{
     left: 2150px;
     top:220px;
+    position: absolute;
+}
+
+#legend{
+    left: 15px;
+    top: 220px;
     position: absolute;
 }
 
@@ -59,4 +65,3 @@
     border-radius: 5px;
     padding: 10px;
 }
-

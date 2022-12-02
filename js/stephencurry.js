@@ -96,9 +96,7 @@ class TopFifty {
         }
         // console.log(players)
         // console.log(full)
-
-        
-
+      
         // draw team line chart svg using the data obtained from data processing
         let team_chart = d3.select('#threepointrev')
             .attr('width', that.width)

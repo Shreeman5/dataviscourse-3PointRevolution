@@ -61,7 +61,9 @@ loadData().then((loadedData) => {
           .style("text-anchor", "middle").style("font-weight",  "bold")
           .style("font-size", "40").style('fill', 'black')
 
-        this.overlay_svg.append('rect').style("stroke", "black").attr('fill', 'white').attr("x", 2150).attr("y", 1060).attr("width", 1200).attr("height", 900)
+        this.overlay_svg.append('rect').style("stroke", "black").attr('fill', 'white').attr("x", 2150)
+        .attr("y", 1060).attr("width", 1200).attr("height", 900)
+        .attr('location', 'relative').attr('left', '400px')
         
         this.overlay_svg.append('text').attr("x", 2750).attr("y", 1100).
             text("THE 3 POINT REVOLUTION(featuring Stephen Curry)")
