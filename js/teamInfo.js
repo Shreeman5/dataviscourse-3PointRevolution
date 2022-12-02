@@ -56,9 +56,23 @@ class TeamInfo {
                 cases.push(element[2])
             })
         }
-        console.log(best_teams_mapped)
 
-        // draw team line chart svg using the data obtained from data processing
+        //find averages for all teams
+
+        // console.log(best_teams_mapped)
+
+        // let total = 0
+        // let team_counter = 0
+        // for (let [key, value] of best_teams_mapped) {
+        //     //console.log(value.length)
+        //     total = total + (3 * value.length)
+        //     team_counter = team_counter + 1
+        // }
+        // console.log('total points', total)
+        // console.log('total teams', team_counter)
+        // console.log('average', total/team_counter)
+
+        //draw team line chart svg using the data obtained from data processing
         let team_chart = d3.select('#teamlinechart')
             .attr('width', that.width)
             .attr('height', that.height)

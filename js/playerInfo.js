@@ -43,6 +43,7 @@ class PlayerInfo {
             }
             counter += 1
         }
+        //console.log(this.best_players)
         let best_players_mapped = d3.group(this.best_players, (d) => d[0])
         let dates = []
         let cases = []
@@ -56,7 +57,20 @@ class PlayerInfo {
                 cases.push(element[2])
             })
         }
-        console.log(best_players_mapped)
+        // console.log(best_players_mapped)
+
+        // find averages for all players
+        
+        // let total = 0
+        // let player_counter = 0
+        // for (let [key, value] of best_players_mapped) {
+        //     //console.log(value.length)
+        //     total = total + (3 * value.length)
+        //     player_counter = player_counter + 1
+        // }
+        // console.log('total points', total)
+        // console.log('total players', player_counter)
+        // console.log('average', total/player_counter)
 
         // draw player line chart svg using the data obtained from data processing
         let player_chart = d3.select('#playerlinechart')

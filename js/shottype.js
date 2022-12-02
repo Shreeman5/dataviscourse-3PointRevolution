@@ -17,7 +17,7 @@ class ShotType {
         // svg padding
         this.pad_left = 80
         this.pad_right = 50
-        this.pad_bottom = 40
+        this.pad_bottom = 70
         this.pad_top = 40
 
         // call draw function
@@ -84,7 +84,7 @@ class ShotType {
             .attr('x1', that.pad_left)
             .attr('y1', that.pad_top)
             .attr('x2', that.pad_left)
-            .attr('y2', that.height - that.pad_top)
+            .attr('y2', that.height - that.pad_bottom)
             .attr('stroke', 'black')
             .attr('stroke_weight', 3)
         
@@ -129,7 +129,7 @@ class ShotType {
                     let t = element * 100;
                     return String(t) + "%";
                 })
-                .attr('stroke', 'black')
+                .attr("font", "30px times")
                 .attr('text-anchor', 'middle')
                 .attr('transform', function(d){
                     let v = yScale(element) + 5
@@ -156,7 +156,7 @@ class ShotType {
                 .text(function(d) {
                     return element;
                 })
-                .attr('stroke', 'black')
+                .attr("font", "30px times")
                 .attr('text-anchor', 'middle')
                 .attr('transform', function(d){
                     return "translate(" + String(xScale(element)+55.83) + ", " + (that.height - that.pad_bottom + 30)  +")";
@@ -236,10 +236,10 @@ class ShotType {
         
         d3.select('#shottypelinechart')
             .append('text')
+            .attr("x", 720)
+            .attr("y", 215)
             .text("Paint")
-            .attr('stroke', 'black')
-            .attr('text-anchor', 'middle')
-            .attr('transform',"translate(740, 212)")
+            .style("font", "20px times")
 
         d3.select('#shottypelinechart')
             .append('rect')
@@ -249,12 +249,12 @@ class ShotType {
             .attr('height', '15')
             .attr('fill', 'red')
 
-            d3.select('#shottypelinechart')
+        d3.select('#shottypelinechart')
             .append('text')
+            .attr("x", 720)
+            .attr("y", 235)
             .text("Mid-Range")
-            .attr('stroke', 'black')
-            .attr('text-anchor', 'middle')
-            .attr('transform',"translate(760, 233)")
+            .style("font", "20px times")
 
         d3.select('#shottypelinechart')
             .append('rect')
@@ -266,18 +266,33 @@ class ShotType {
 
         d3.select('#shottypelinechart')
             .append('text')
+            .attr("x", 720)
+            .attr("y", 255)
             .text("Three Point")
-            .attr('stroke', 'black')
-            .attr('text-anchor', 'left')
-            .attr('transform',"translate(722, 252)")    
+            .style("font", "20px times")
         
         // append title 
         d3.select('#shottypelinechart')
             .append('text')
             .text("Percentage of Shot Type Attempts by Season")
-            .attr('stroke', 'black')
             .attr('text-anchor', 'middle')
             .attr('transform',"translate(450, 40)")
-            .style("font", "25px times")
+            .style("font", "30px times")
+
+        //append y axis label
+        d3.select('#shottypelinechart').append("text")
+        .style("font", "25px times")
+        .style("text-anchor", "middle")
+        .attr('x', this.width/2)
+        .attr('y', 740)
+        .text('Seasons')
+
+        d3.select('#shottypelinechart').append("text")
+        .style("font", "25px times")
+        .style("text-anchor", "middle")
+        .attr('x', 400)
+        .attr('y', 0)
+        .attr('transform', 'rotate(270 400 376)')
+        .text('Percentage of Shot Type')
     }
 }
