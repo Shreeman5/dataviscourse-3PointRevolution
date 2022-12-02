@@ -14,18 +14,18 @@ async function loadData () {
   shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2020-21_FG3A.csv'));
   shotdata10_22.push(await d3.csv('SeparatedData/Heatmap Data/2021-22_FG3A.csv'));
 
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2010-11_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2011-12_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2012-13_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2013-14_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2014-15_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2015-16_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2016-17_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2017-18_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2018-19_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2019-20_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2020-21_FGA.csv'));
-  fgadata10_22.push(await d3.csv('SeparatedData/LineChart/2021-22_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2010-11_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2011-12_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2012-13_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2013-14_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2014-15_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2015-16_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2016-17_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2017-18_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2018-19_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2019-20_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2020-21_FGA.csv'));
+  fgadata10_22.push(await d3.csv('SeparatedData/Linechart/2021-22_FGA.csv'));
   return { shotdata10_22 , fgadata10_22};
 }
 
