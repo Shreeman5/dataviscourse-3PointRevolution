@@ -199,13 +199,9 @@ class Heatmap {
         
         d3.select('.shot-positions')
             .attr('transform', 'rotate(180 400 376)');
-        
-        
-        let binary
+
         let player_array = []
         shotdata.forEach(d => {
-            // console.log('A:', d.PLAYER_NAME)
-            // console.log('B: ', d.TEAM_NAME)
             player_array.push(d.PLAYER_NAME)
         })
 
@@ -219,7 +215,6 @@ class Heatmap {
         .text(receivedString)
         
         
-        console.log(receivedString)
         // Show team and/or player picture from other linecharts
         let path1
         let path2

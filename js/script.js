@@ -69,6 +69,7 @@ loadData().then((loadedData) => {
 
         this.overlay_svg.append('rect').style("stroke", "black").attr('fill', 'white').attr("x", xPos-20)
         .attr("y", yPos-150).attr("width", 1200).attr("height", 900)
+        .attr('id', 'overlay-rect')
         .attr('location', 'relative').attr('left', '400px')
         
         this.overlay_svg.append('text').attr("x", xPos + 70).attr("y", yPos - 100)  
