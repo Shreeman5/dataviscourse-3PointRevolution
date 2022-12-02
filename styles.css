@@ -1,3 +1,28 @@
+#dataset-select{
+    width:135px;
+    height:30px;
+    font-weight : bold;
+    font-size: 20px;
+}
+
+#button0{
+    width:160px;
+    height:30px;
+    font-size: 20px;
+}
+
+#button{
+    width:180px;
+    height:30px;
+    font-size: 20px;
+}
+
+#button2{
+    width:150px;
+    height:30px;
+    font-size: 20px;
+}
+
 .shotmap-court *{
     fill: transparent;
     stroke: rgb(177 68 68 / 65%);
@@ -14,46 +39,47 @@
 
 #heatmap{
     left: 15px;
-    top: 220px;
+    top: 360px;
     position: absolute;
 }
 
 #court{
     left: 15px;
-    top: 220px;
-    position: absolute;
-}
-
-#playerlinechart{
-    left: 900px;
-    top: 220px;
-    position: absolute;
-}
-
-#teamlinechart{
-    left: 900px;
-    top: 1050px;
-    position:absolute;
-}
-
-#shottypelinechart{
-    left: 0px;
-    top: 1050px;
-    position: absolute;
-
-} 
-
-#threepointrev{
-    left: 2150px;
-    top:220px;
+    top: 360px;
     position: absolute;
 }
 
 #legend{
     left: 15px;
-    top: 220px;
+    top: 360px;
     position: absolute;
 }
+
+#playerlinechart{
+    left: 900px;
+    top: 360px;
+    position: absolute;
+}
+
+#threepointrev{
+    left: 2150px;
+    top:360px;
+    position: absolute;
+}
+
+
+#shottypelinechart{
+    left: 0px;
+    top: 1190px;
+    position: absolute;
+} 
+
+#teamlinechart{
+    left: 900px;
+    top: 1190px;
+    position:absolute;
+}
+
 
 .tooltip {
     position: absolute;
