@@ -55,6 +55,12 @@
     position: absolute;
 }
 
+.overlay{
+    left: 500px;
+    top: 400px;
+    position: relative;
+}
+
 .tooltip {
     position: absolute;
     pointer-events: none;

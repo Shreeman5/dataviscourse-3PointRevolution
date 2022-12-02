@@ -94,8 +94,6 @@ class TopFifty {
                 full.push([element[0], element[1], element[2], element[3], element[4], element[5], element[6]])
             })
         }
-        // console.log(players)
-        // console.log(full)
       
         // draw team line chart svg using the data obtained from data processing
         let team_chart = d3.select('#threepointrev')
