@@ -11,3 +11,5 @@ will show that players career statistics.
 
 The buttons above the heatmap can be clicked to bring up information on Steph Curry, considered the greatest three point shooter of all time,
 as well as information on the  visualizations. 
+
+Hosted at: https://nickdejonge.github.io/
