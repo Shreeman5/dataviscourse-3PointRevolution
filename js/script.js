@@ -165,9 +165,6 @@ loadData().then((loadedData) => {
       .text("- The team line chart supports our hypothesis.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
 
-
-
-
       this.overlay_svg.append('text').attr("x", 450).attr("y", 970)
       .text("Information from the percentage linechart(bottom left chart):")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#023020')
@@ -179,9 +176,6 @@ loadData().then((loadedData) => {
       this.overlay_svg.append('text').attr("x", 450).attr("y", 1030)
       .text("expense of mid-range shots. Paint shots are relatively unaffected. The percentage chart supports our hypothesis.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-
-
 
       this.overlay_svg.append('text').attr("x", 450).attr("y", 1080)
       .text("In conclusion, from a player perspective and from a team persepctive, the number of 3 pointers has increased by")
