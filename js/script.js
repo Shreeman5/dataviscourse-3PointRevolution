@@ -56,132 +56,135 @@ loadData().then((loadedData) => {
           .style('background-color', 'white')
           .style('opacity', '0.7')
 
-      this.overlay_svg.append('text').attr("x", 1675).attr("y", 40).
-        text("CLICK ANYWHERE TO EXIT OVERLAY!")
-        .style("text-anchor", "middle").style("font-weight",  "bold")
-        .style("font-size", "40").style('fill', 'black')
+      let xPos = 900;
+      let yPos = 500; 
+      let diff = 30;
+      i = 0;
 
-      this.overlay_svg.append('rect').style("stroke", "black").attr('fill', 'white').attr("x", 450)
-      .attr("y", 150).attr("width", 1200).attr("height", 1000)
+      this.overlay_svg.append('text').attr("x", xPos+600).attr("y", 40)
+      .text("CLICK ANYWHERE TO EXIT OVERLAY!")
+      .style("text-anchor", "middle").style("font-weight",  "bold")
+      .style("font-size", "40").style('fill', 'black')
+
+      this.overlay_svg.append('rect').style("stroke", "black").attr('fill', 'white').attr("x", xPos-20)
+      .attr("y", yPos-150).attr("width", 1230).attr("height", 1000)
       //.attr('location', 'relative').attr('left', '400px')
       
-      this.overlay_svg.append('text').attr("x", 1050).attr("y", 200).
-          text("THE 3 POINT REVOLUTION")
+      this.overlay_svg.append('text').attr("x", xPos+600).attr("y", yPos - 100)  
+          .text("THE 3 POINT REVOLUTION")
           .style("text-anchor", "middle").style("font-weight",  "bold")
           .style("font-size", "40").style('fill', 'black')
 
-
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 250)
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("Information from the heatmap(top left chart): ")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#023020')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 280)
+    i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- Between consecutive seasons, generally, we can see that the heatmap is filling up the court more and a lot of")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 310)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("dark red spots(indicating efficiency) are appearing. This phenomena supports our hypothesis.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
+      i++;
 
 
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 360)
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("Information from the player linechart(top middle chart): ")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#023020')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 390)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- We saw fit to highlight the top 10 players for a season because they represent the best of the league.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 420)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- When calculating averages, the 10 best players can be outliers. So, we calculated the league average for 3")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 450)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("pointers for all players in each season.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 480)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- In 2010-11, on average, players scored 162.67 points = 54 3-pointers and by 2021-22, players scored 190.31")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 510)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("points = 63 3-pointers.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 540)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- This is fascinating because in 2010-11, 311 players played and by 2021-22, 516 players played. Despite the")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 570)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("increase in number of players, the average continued to rise.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 600)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- More generally, the average has steadily increased for all the players and for the top 10 players as well(540")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 630)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("points in 2010-11 to 816.9 points in 2021-22). The player line chart supports our hypothesis.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
+      i++;
   
 
 
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 680)
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("Information from the team linechart(bottom middle chart):")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#023020')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 710)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- We saw fit to highlight the top 5 teams for a season because they represent the best of the league.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 740)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- When calculating averages, the 5 best teams can be outliers. So, we calculated the league average for 3 pointers")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 770)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("for all teams in each season.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 800)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- In 2010-11, on average, teams scored 1686.4 points = 562 3-pointers and by 2021-22, teams scored 3273.3 points")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 830)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("(almost double) = 1091 3-pointers.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 860)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- More generally, the average has steadily increased for all the teams and for the top 5 teams as well(50592 points")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 890)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("in 2010-11 to 98199 points in 2021-22).")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 920)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- The team line chart supports our hypothesis.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 970)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("Information from the percentage linechart(bottom left chart):")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#023020')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 1000)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("- It is quite clear that the number of attempts for 3 pointers has increased over the last 12 years. This comes at the")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 1030)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("expense of mid-range shots. Paint shots are relatively unaffected. The percentage chart supports our hypothesis.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#00008B')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 1080)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("In conclusion, from a player perspective and from a team persepctive, the number of 3 pointers has increased by")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#023020')
-
-      this.overlay_svg.append('text').attr("x", 450).attr("y", 1110)
+      i++;
+      this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
       .text("a lot over the last 12 years.")
       .style("font-weight", "bold").style("font-size", "25px").style('fill', '#023020')
       
@@ -227,7 +230,7 @@ loadData().then((loadedData) => {
             .style("font-size", "40").style('fill', 'black')
 
         this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos - 50)
-        .text("How to use the graph above? ")
+        .text("How to use the graph on the top right? ")
         .style("font-weight", "bold").style("font-size", "25px").style('fill', '#8B0000')
 
         this.overlay_svg.append('text').attr("x", xPos).attr("y", yPos + i * diff)
