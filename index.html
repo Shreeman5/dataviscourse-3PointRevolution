@@ -17,9 +17,20 @@
 <body id="body">
     <header>
         <h1>3 Point Revolution - CS6630 Data Visualization Project</h1>
-        <h3>Group Members: Nick de Jonge, Shreeman Gautam</h3>
-        <div>**Project info/description**</div>
-        <p>Choose Season:</p>
+        <h2>Group Members: Nick de Jonge, Shreeman Gautam</h2>
+        <h3>
+            These visualizations support our hypothesis that 3 pointers have increased over the last 12 years. Use the dropdown to find the heatmap, top 10 players(for 3 pointers) linechart(top middle) 
+        </h3>
+        <h3>
+            and top 5 teams(for 3 pointers) linechart(bottom middle) for any season. The heatmap is color coded by percentage of shots made/shots attempted in a position. The top middle and bottom middle 
+        </h3>
+        <h3>
+            linecharts have an overlay line attached to them. This will allow you to see the progression of successful 3 pointers for players and teams each season. The top right linechart has a 
+        </h3>
+        <h3>
+            tooltip functionality. Hover over each circle and it will give you information about a player. Use the 3 Point Revolution and Stephen Curry buttons to learn about the visualizations in detail.
+        </h3>
+        <h3>Choose Season:</h3>
         <select name="dataset" id="dataset-select" onchange="dataSelect(this.value);">
             <option value="0">2010-2011</option>
             <option value="1">2011-2012</option>
@@ -34,8 +45,9 @@
             <option value="10">2020-2021</option>
             <option value="11">2021-2022</option>
         </select>
-        <button type="button" onclick="getValue()">Reset Heatmap</button>
-        <button id ="button">Stephen Curry</button>
+        <button type="button" id="button0" onclick="getValue()">Reset Heatmap</button>
+        <button id ="button">3 Point Revolution</button>
+        <button id ="button2">Stephen Curry</button>
     </header>
     <div class="view">   
 
