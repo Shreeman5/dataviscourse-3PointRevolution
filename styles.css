@@ -39,44 +39,44 @@
 
 #heatmap{
     left: 15px;
-    top: 380px;
+    top: 450px;
     position: absolute;
 }
 
 #court{
     left: 15px;
-    top: 380px;
+    top: 450px;
     position: absolute;
 }
 
 #legend{
     left: 15px;
-    top: 380px;
+    top: 450px;
     position: absolute;
 }
 
 #playerlinechart{
     left: 900px;
-    top: 380px;
+    top: 450px;
     position: absolute;
 }
 
 #threepointrev{
     left: 2150px;
-    top:380px;
+    top:450px;
     position: absolute;
 }
 
 
 #shottypelinechart{
     left: 0px;
-    top: 1210px;
+    top: 1250px;
     position: absolute;
 } 
 
 #teamlinechart{
     left: 900px;
-    top: 1210px;
+    top: 1250px;
     position:absolute;
 }
 
