@@ -1,21 +1,19 @@
 Hosted at: https://nickdejonge.github.io/
+Video: 
 
-Video: https://vimeo.com/manage/videos/777913589
-
-What is in this repository?
+# What is in this repository?
 
 The index.html file uses all the javascript files from the js folder as source scripts, the 
 styles.css file as the stylesheet, all the image files from the images folder and the data files
 from the SeparatedData subfolders(Heatmap Data and Linechart). There is also a process book that shows how we made our visualization. 
 
-How to use this repository?
+# How to use this repository?
 
 Once you have cloned the repository in your working machine, navigate to the root of your 
 local repository. To be able to access the data files with Javascript, you will need to 
-serve the project directory, not just opening the HTML file in a browser. If your development environment doesn't provide a built-in server, use this command
+serve the project directory, not just opening the HTML file in a browser. If your development environment doesn't provide a built-in server, use this command:
 
-# for python 3
-$ python -m http.server 8080
+python -m http.server 8080
 
 We used visual studio for coding. Open visual studio. On the left, you will notice the 
 index.html file. Right click on it and one of the options is to "Open with live server".
@@ -35,7 +33,7 @@ The chart on the bottom left shows the number of 3 pointers attempted rising ove
 
 The other 2 buttons above the heatmap can be clicked to bring up information on Steph Curry, considered the greatest three point shooter of all time, as well as information on the visualizations.
 
-Code documentation:
+# Code documentation:
 
 The index.html and styles.css file shows how our visualizations are structured. In summary, we declare each visualization as an svg(from the index.html file) and each svg is given a width and height(from the styles.css file). As mentioned before, the html file specifies the javascript files from the js folder as scripts. Additionally, the dropdowns and the buttons are declared in the html file as well, with their styles specified in the css file.
 
