@@ -1,5 +1,6 @@
 Hosted at: https://nickdejonge.github.io/
-Video: 
+
+Video: https://vimeo.com/manage/videos/777913589
 
 # What is in this repository?
 
